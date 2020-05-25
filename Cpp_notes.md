@@ -6,7 +6,15 @@
 | ----------- | ----------- | ----------- |
 |     idea        | function    | object       |
 |     Namespace        |    |         |
-
+|     Header file      | stdio.h.   |  iostream.h       |
+| Focus      |  function    | data |
+| dynamic memory allocation,  malloc()  free() | 
+| exception handling|    |         |
+| input/output|    |         |
+| Reference|    |         |
+| Encapsulation |    |         |
+| polymorphism|    |         |
+| inheritance|    |         |
 # OOP in C vs C++
 C:    struct —> Data                                   —> Variable
 C++:  clas  —> (Data variables) + （Member functions)  —> Objecte
