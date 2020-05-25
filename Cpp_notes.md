@@ -2,8 +2,8 @@
 ### C++ can be said a superset of C. Major added features in C++ are Object-Oriented Programming, Exception Handling and rich C++ Library.
 ### C is a function driven language because C is a procedural programming language.	C++ is an object driven language because it is an object oriented programming.
 ## Namespace is used by C++, which avoid name collisions.
-|             | C           | Cpp       |
-|             | ----------- | ----------- |
+|             | C           | Cpp         |
+| ----------- | ----------- | ----------- |
 |             | Header      | Title       |
 |             | Paragraph   | Text        |
 
