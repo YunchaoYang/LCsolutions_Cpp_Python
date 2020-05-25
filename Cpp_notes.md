@@ -4,8 +4,8 @@
 ## Namespace is used by C++, which avoid name collisions.
 |             | C           | Cpp         |
 | ----------- | ----------- | ----------- |
-|             | Header      | Title       |
-|             | Paragraph   | Text        |
+|     idea        | function    | object       |
+|     Namespace        |    |         |
 
 # OOP in C vs C++
 C:    struct —> Data                                   —> Variable
