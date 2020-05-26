@@ -23,6 +23,19 @@ Data and functions are encapsulated together in form of an object in C++.
 
 # Static
 
+# reference vs pointer
+
+int&  r = i;   // refernce to an integer i
+double& s = d; //   
+
+int    *ip;    // pointer to an integer
+double *dp;    // pointer to a double floating number 
+float  *fp;    // pointer to a single floating number
+char   *ch;    // pointer to a character
+
+int  var = 20;
+int *ip;
+ip = &var;
 
 # class
 ##
