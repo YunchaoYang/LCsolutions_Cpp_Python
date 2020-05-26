@@ -1,3 +1,9 @@
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -19,3 +25,18 @@ public:
      return result;    
     }
 };
+
+void print_vec(const vector<int>& vec){
+for (int ele: vec){
+    cout << ele << '\t';
+}
+}
+
+int main() {
+
+    vector<int> nums = {2,7,5,10};
+    int target = 9;
+    print_vec(Solution().twoSum(nums, target));
+
+    return 0;
+}
