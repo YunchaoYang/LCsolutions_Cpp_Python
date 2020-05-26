@@ -33,9 +33,11 @@ double *dp;    // pointer to a double floating number
 float  *fp;    // pointer to a single floating number
 char   *ch;    // pointer to a character
 
-int  var = 20;
+int var = 20;
+int var2
 int *ip;
 ip = &var;
+var2 = *ip;
 
 # class
 ##
