@@ -9,10 +9,13 @@ C++ STL（Standard Template Library 标准模板库）是一套功能强大的 C
 
 容器=数据结构+算法。
 STL容器
+
 ## 顺序容器(Sequence Container) 
 * Eg. vector  数组。查询快，插入慢。deque 数组,采用哈希映射。list 链表 ,插入快，查询慢。
+
 顺序容器的共同函数
-|函数|	描述|
+
+|函数 |	描述|
 | ----- | ----- | 
 |assign(n, elem)|	将指定元素elem的n份拷贝加入(赋值)到容器中|
 | assign(begin, end)| 	将迭代器[beg，end)间的元素赋值给当前容器| 
