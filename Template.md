@@ -23,19 +23,20 @@ int& a = b is setting a's ADDRESS to b's ADDRESS (a is a reference to b)
 // N 必须是编译时的常量表达式
 template
 void printArray(const T (&a)[N]) {
-std::cout << "[";
-const char *sep = "";
-for (int i = 0; i < N; i++, (sep = ", ")) {
-std::cout << sep << a[i];
-}
-std::cout << "]" << std::endl;
-}
+    std::cout << "[";
+    const char *sep = "";
+    for (int i = 0; i < N; i++, (sep = ", ")) {
+        std::cout << sep << a[i];
+    }
+    std::cout << "]" << std::endl;
+ }
+
 int main() {
 // T: int, N: 3
-int a[]={1, 2, 3};
-printArray(a);
-float b[] = {1.1, 2.2, 3.3};
-printArray(b);
-return 0;
+    int a[]={1, 2, 3};
+    printArray(a);
+    float b[] = {1.1, 2.2, 3.3};
+    printArray(b);
+    return 0;
 }
 ```
