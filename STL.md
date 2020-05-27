@@ -12,7 +12,7 @@ STL容器
 
 容器类
 
-| STL Container	| Header	Applications| 
+| STL Container	Header | 	Applications| 
 | --------------|-------------- | 
 vector	<vector>	| 直接访问任意元素，快速插入、删除尾部元素| 
 deque	<deque>	| 直接访问任意元素，快速插入、删除头部和尾部元素| 
@@ -53,6 +53,17 @@ priority_queue	<queue>	| 高优先级元素先删除|
 | back()	| 返回容器尾元素| 
 | insert(position, elem)	| 将元素插入到容器指定位置| 
 
+## 关联式容器(Associative Containers)
+关联容器有以下四种：set、multiset、map、multimap。关联容器内的元素是排序的。插入元素时，容器会按一定的排序规则将元素放到适当的位置上，因此插入元素时不能指定位置。
+
+### 集合(set)
+#### 由节点组成的红黑树，每个节点都包含着一个元素，节点之间以某种作用于元素对的谓词排列，没有两个不同的元素能够拥有相同的次序 。快速查询元素，无重复关键字。<set>
+*头文件: #include <set> 定义：set <data_type> set_name; 如：set <int> s;//默认由小到大排序 如果想按照自己的方式排序，可以重载小于号。
+ 
+#### multiset  可以重复
+#### 映射map  由{键，值}对组成的集合，以某种作用于键对上的谓词排列。Key/value pair mapping(键值对映射)。不允许重复关键字，使用关键字快速查询元素 <map>存储有序，根据键来排序，不能重复
+#### 多重映射multimap 与map相同，可以重复
+
 一级容器的通用函数
 顺序容器+关联容器= 一级容器
 
@@ -67,26 +78,15 @@ priority_queue	<queue>	| 高优先级元素先删除|
 |c.rend()	|返回容器首元素之前位置的迭代器，用于逆序遍历|
 |c.erase(beg, end)	|删除容器中从beg到end-1之间的元素。beg和end都是迭代器|
 
-## 关联式容器
-### set  元素不能重复
-*头文件: #include <set> 定义：set <data_type> set_name; 如：set <int> s;//默认由小到大排序 如果想按照自己的方式排序，可以重载小于号。
-
-#### multiset  可以重复
-#### map 存储有序，根据键来排序，不能重复
-#### multimap 与map相同，可以重复
-
 ## 容器适配器
 Eg. stack
 头文件: #include <stack> 定义：stack<data_type> stack_name;
 如：stack <int> s; 操作： empty() -- 返回bool型，表示栈内是否为空 (s.empty() )
 
-size() -- 返回栈内元素个数 (s.size() )
-
-top() -- 返回栈顶元素值 (s.top() )
-
-pop() -- 移除栈顶元素(s.pop(); )
-
-push(data_type a) -- 向栈压入一个元素 a(s.push(a); )
+* size() -- 返回栈内元素个数 (s.size() )
+* top() -- 返回栈顶元素值 (s.top() )
+* pop() -- 移除栈顶元素(s.pop(); )
+* push(data_type a) -- 向栈压入一个元素 a(s.push(a); )
 
 queue(队列，先进先出)
 头文件: #include <queue>
@@ -94,79 +94,40 @@ queue(队列，先进先出)
 定义：queue <data_type> queue_name; 如：queue <int> q; 操作： empty() -- 返回bool型，表示queue是否为空 (q.empty() )
 
 size() -- 返回queue内元素个数 (q.size() )
-
 front() -- 返回queue内的下一个元素 (q.front() )
-
 back() -- 返回queue内的最后一个元素(q.back() )
-
 pop() -- 移除queue中的一个元素(q.pop(); )
-
 push(data_type a) -- 将一个元素a置入queue中(q.push(a); )
 
-容器适配器(Container Adapters)
-　　Features:
-　　　　①由顺序容器变化而来
-　　　　②程序员可为适配器选择合适的顺序容器
-
-4.栈(stack) 后进先出的值的排列 <stack>
+## 容器适配器(Container Adapters)
+### 栈(stack) 后进先出的值的排列 <stack>
 　　stack<ElementType> st;　　　  //创建一个空栈st
-
 　　st.push(ElementType);　　　　  //在栈顶增加元素
-
 　　st.pop();　　　　　　　　　　　  //移除栈顶元素（不会返回栈顶元素的值）
-
 　　st.top();　　　　　　　　　　　   //返回栈顶元素
-
 　　st.empty();　　　　　　　　　　 //判断栈是否为空，空则返回true
-
 　　st.size();　　　　　　　　　　　 //返回栈中元素数目
 
-5.队列(queue) 先进先出的值的排列 <queue>
+### 队列(queue) 先进先出的值的排列 <queue>
 　　queue<ElementType> q;　　　　//创建一个空队列
-
 　　q.push(ElementType);　　　　　 //将一个元素置入queue中
-
 　　q.pop();　　　　　　　　　　　　 //从queue中移除一个元素(不会返回队头元素值)
-
 　　q.front();　　　　　　　　　        //返回queue内的第一个元素(也就是第一个被置入的元素)
-
 　　q.back();　　　　　　　　　　　　//返回queue中最后一个元素(也就是最后被插入的元素)
-
 　　q.empty();　　　　　　　　　　　//判断队列是否为空，空则返回true
-
 　　q.size();　　　　　　　　　　　　//返回队列中元素数目。
 
 　　注意：pop()虽然会移除下一个元素，但是并不返回它，front()和back()返回下一个元素但并不移除该元素。
 
-6.优先队列(priority_queue) 元素的次序是由作用于所存储的值对上的某种谓词决定的的一种队列 <queue>
+### 优先队列(priority_queue) 
+    元素的次序是由作用于所存储的值对上的某种谓词决定的的一种队列 <queue>
 　　priority_queue<ElementType> pq;　　　  //创建一个数据越大,优先级越高的队列
-
 　　priority_queue<int, vector<int>, greater<int> > pq;　　//创建一个数据越小,优先级越高的队列
-
 　　pq.push(ElementType);　　　　//将一个元素置入priority_queue中
-
 　　pq.pop();　　　　　　　　　　　//从priority_queue中移除一个元素(不会返回队头元素值)
-
 　　pq.top();　　　　　　　　　　　 //返回priority_queue中优先级最高的元素
-
 　　pq.empty();　　　　　　　　　  //判断priority_queue是否为空，空则返回true
-
-　　pq.size();　　　　　　　　　　　//返回priority_queue中元素数目
-  
-关联式容器(Associative Containers)
-关联容器有以下四种：set、multiset、map、multimap。关联容器内的元素是排序的。插入元素时，容器会按一定的排序规则将元素放到适当的位置上，因此插入元素时不能指定位置。
-Features:
-　　　　①使用“key”快速存取元素
-　　　　②元素按规则排序
-　　　　③默认用< 运算符排序
-
-7.集合(set) 由节点组成的红黑树，每个节点都包含着一个元素，节点之间以某种作用于元素对的谓词排列，没有两个不同的元素能够拥有相同的次序 。快速查询元素，无重复关键字。<set>
-
-8.多重集合(multiset) 允许存在两个次序相等的元素的集合。与set相同，但允许重复关键字<set>
-
-9.映射(map) 由{键，值}对组成的集合，以某种作用于键对上的谓词排列。Key/value pair mapping(键值对映射)。不允许重复关键字，使用关键字快速查询元素 <map>
-
-10.多重映射(multimap) 允许键对有相等的次序的映射。与map相同，但允许重复关键字 <map>
+　　pq.size();　　　　　　　　　　　//返回priority_queue中元素数目  
 
 关联容器中的共同函数
 | 函数 |	描述|
