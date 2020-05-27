@@ -9,25 +9,28 @@ C++ STL（Standard Template Library 标准模板库）是一套功能强大的 C
 
 容器=数据结构+算法。
 STL容器
-(1) 顺序容器(Sequence Container) 
+## 顺序容器(Sequence Container) 
 * Eg. vector  数组。查询快，插入慢。deque 数组,采用哈希映射。list 链表 ,插入快，查询慢。
 顺序容器的共同函数
-函数	描述
-assign(n, elem)	将指定元素elem的n份拷贝加入(赋值)到容器中
-assign(begin, end)	将迭代器[beg，end)间的元素赋值给当前容器
-push_back(elem)	将元素附加到容器
-pop_back()	删除容器尾元素
-front	返回容器首元素
-back()	返回容器尾元素
-insert(position, elem)	将元素插入到容器指定位置
+|函数|	描述|
+| ----- | ----- | 
+|assign(n, elem)|	将指定元素elem的n份拷贝加入(赋值)到容器中|
+| assign(begin, end)| 	将迭代器[beg，end)间的元素赋值给当前容器| 
+| push_back(elem)| 	将元素附加到容器| 
+| pop_back()	| 删除容器尾元素| 
+| front	| 返回容器首元素| 
+| back()	| 返回容器尾元素| 
+| insert(position, elem)	| 将元素插入到容器指定位置| 
 
-(2) 关联式容器
-set  元素不能重复
+## 关联式容器
+### set  元素不能重复
 *头文件: #include <set> 定义：set <data_type> set_name; 如：set <int> s;//默认由小到大排序 如果想按照自己的方式排序，可以重载小于号。
-multiset  可以重复
-map 存储有序，根据键来排序，不能重复
-multimap 与map相同，可以重复
-(3). 容器适配器
+
+#### multiset  可以重复
+#### map 存储有序，根据键来排序，不能重复
+#### multimap 与map相同，可以重复
+
+## 容器适配器
 Eg. stack
 头文件: #include <stack> 定义：stack<data_type> stack_name;
 如：stack <int> s; 操作： empty() -- 返回bool型，表示栈内是否为空 (s.empty() )
@@ -58,28 +61,32 @@ push(data_type a) -- 将一个元素a置入queue中(q.push(a); )
 
 
 容器类
-STL Container	Header	Applications
-vector	<vector>	直接访问任意元素，快速插入、删除尾部元素
-deque	<deque>	直接访问任意元素，快速插入、删除头部和尾部元素
-list	<list>	快速插入、删除任意位置元素
-set	<set>	快速查询元素，无重复关键字
-multiset	<set>	与set相同，但允许重复关键字
-map	<map>	Key/value pair mapping(键值对映射)。不允许重复关键字，使用关键字快速查询元素
-multimap	<map>	与map相同，但允许重复关键字
-stack	<stack>	后进先出容器.
-queue	<queue>	先进先出容器
-priority_queue	<queue>	高优先级元素先删除
+
+| STL Container	| Header	Applications| 
+| --------------|-------------- | 
+vector	<vector>	| 直接访问任意元素，快速插入、删除尾部元素| 
+deque	<deque>	| 直接访问任意元素，快速插入、删除头部和尾部元素| 
+list	<list>	| 快速插入、删除任意位置元素| 
+set	<set>	| 快速查询元素，无重复关键字| 
+multiset	<set>	| 与set相同，但允许重复关键字| 
+map	<map>	| Key/value pair mapping (键值对映射)。不允许重复关键字，使用关键字快速查询元素| 
+multimap	<map>	| 与map相同，但允许重复关键字| 
+stack	<stack>	| 后进先出容器.| 
+queue	<queue>	| 先进先出容器| 
+priority_queue	<queue>	| 高优先级元素先删除| 
  
  所有容器共同函数
-Functions	Description
-non-argconstructor 无参构造函数	构造一个空容器
-constructor with args带参构造函数	每个容器都有多个带有参数的构造函数
-copy constructor 拷贝构造函数	创建一个容器，从一个已有的同类型容器中复制元素
-destructor 析构函数	容器销毁后执行清理工作
-empty()	若容器中没有元素则返回空
-size()	返回容器中的元素数目
-operator=	将容器内容复制到另一个容器
-Relational operators(<, <=, >, >=, ==, and !=)	顺序比较两个容器中的对应元素，来确定大小关系
+
+|Functions	Description| |
+| --------------|-------------- | 
+|non-argconstructor |无参构造函数	构造一个空容器|
+|constructor with args|带参构造函数	每个容器都有多个带有参数的构造函数|
+|copy constructor |拷贝构造函数	创建一个容器，从一个已有的同类型容器中复制元素|
+|destructor |析构函数	容器销毁后执行清理工作|
+|empty()	|若容器中没有元素则返回空|
+|size()|	返回容器中的元素数目|
+|operator=	|将容器内容复制到另一个容器|
+|Relational operators(<, <=, >, >=, ==, and !=)	|顺序比较两个容器中的对应元素，来确定大小关系|
 
 
 顺序容器的共同函数
