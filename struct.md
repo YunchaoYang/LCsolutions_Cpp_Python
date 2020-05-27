@@ -1,5 +1,5 @@
 Notes on C++ struct
-
+```cpp
 struct Books
 {
    char  title[50];
@@ -8,8 +8,8 @@ struct Books
    int   book_id;
 } book;
 Books book1;
-
-# 成员访问运算符（.）
+```
+### 成员访问运算符（.）
  `strcpy( Book1.title, "C++ 教程");`
  
  #结构作为函数参数, 传参方式与其他类型的变量或指针类似
