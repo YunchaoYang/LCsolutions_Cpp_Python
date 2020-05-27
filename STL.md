@@ -64,6 +64,15 @@ priority_queue	<queue>	| 高优先级元素先删除|
 #### 映射map  由{键，值}对组成的集合，以某种作用于键对上的谓词排列。Key/value pair mapping(键值对映射)。不允许重复关键字，使用关键字快速查询元素 <map>存储有序，根据键来排序，不能重复
 #### 多重映射multimap 与map相同，可以重复
 
+关联容器中的共同函数
+| 函数 |	描述|
+|--------|---------|
+|find(key)	|搜索容器中具有key的元素，返回指向该元素的迭代器|
+|lower_bound(key)	|搜索容器中具有key的第一个元素，返回指向该元素的迭代器|
+|upper_bound(key)	|搜索容器中具有key的最后一个元素，返回指向该元素之后位置的迭代器|
+|count(key)|	返回容器中具有key的元素的数目|
+默认情况下，关联容器中的元素是从小到大排序（或按关键字从小到大排序）的，而且用<运算符比较元素或关键字大小。因为是排好序的，所以关联容器在查找时具有非常好的性能。
+
 一级容器的通用函数
 顺序容器+关联容器= 一级容器
 
@@ -78,38 +87,20 @@ priority_queue	<queue>	| 高优先级元素先删除|
 |c.rend()	|返回容器首元素之前位置的迭代器，用于逆序遍历|
 |c.erase(beg, end)	|删除容器中从beg到end-1之间的元素。beg和end都是迭代器|
 
-## 容器适配器
-Eg. stack
-头文件: #include <stack> 定义：stack<data_type> stack_name;
-如：stack <int> s; 操作： empty() -- 返回bool型，表示栈内是否为空 (s.empty() )
-
-* size() -- 返回栈内元素个数 (s.size() )
-* top() -- 返回栈顶元素值 (s.top() )
-* pop() -- 移除栈顶元素(s.pop(); )
-* push(data_type a) -- 向栈压入一个元素 a(s.push(a); )
-
-queue(队列，先进先出)
-头文件: #include <queue>
- 
-定义：queue <data_type> queue_name; 如：queue <int> q; 操作： empty() -- 返回bool型，表示queue是否为空 (q.empty() )
-
-size() -- 返回queue内元素个数 (q.size() )
-front() -- 返回queue内的下一个元素 (q.front() )
-back() -- 返回queue内的最后一个元素(q.back() )
-pop() -- 移除queue中的一个元素(q.pop(); )
-push(data_type a) -- 将一个元素a置入queue中(q.push(a); )
 
 ## 容器适配器(Container Adapters)
-### 栈(stack) 后进先出的值的排列 <stack>
-　　stack<ElementType> st;　　　  //创建一个空栈st
+### 栈(stack) 后进先出 <stack>
+　 #include <stack> 　
+    stack<ElementType> st;　　　  //创建一个空栈st
 　　st.push(ElementType);　　　　  //在栈顶增加元素
 　　st.pop();　　　　　　　　　　　  //移除栈顶元素（不会返回栈顶元素的值）
 　　st.top();　　　　　　　　　　　   //返回栈顶元素
 　　st.empty();　　　　　　　　　　 //判断栈是否为空，空则返回true
 　　st.size();　　　　　　　　　　　 //返回栈中元素数目
 
-### 队列(queue) 先进先出的值的排列 <queue>
-　　queue<ElementType> q;　　　　//创建一个空队列
+### 队列(queue) 先进先出 <queue>
+　　头文件: #include <queue>
+    queue<ElementType> q;　　　　//创建一个空队列
 　　q.push(ElementType);　　　　　 //将一个元素置入queue中
 　　q.pop();　　　　　　　　　　　　 //从queue中移除一个元素(不会返回队头元素值)
 　　q.front();　　　　　　　　　        //返回queue内的第一个元素(也就是第一个被置入的元素)
@@ -129,17 +120,7 @@ push(data_type a) -- 将一个元素a置入queue中(q.push(a); )
 　　pq.empty();　　　　　　　　　  //判断priority_queue是否为空，空则返回true
 　　pq.size();　　　　　　　　　　　//返回priority_queue中元素数目  
 
-关联容器中的共同函数
-| 函数 |	描述|
-|--------|---------|
-|find(key)	|搜索容器中具有key的元素，返回指向该元素的迭代器|
-|lower_bound(key)	|搜索容器中具有key的第一个元素，返回指向该元素的迭代器|
-|upper_bound(key)	|搜索容器中具有key的最后一个元素，返回指向该元素之后位置的迭代器|
-|count(key)|	返回容器中具有key的元素的数目|
 
-默认情况下，关联容器中的元素是从小到大排序（或按关键字从小到大排序）的，而且用<运算符比较元素或关键字大小。因为是排好序的，所以关联容器在查找时具有非常好的性能。
-
-除了以上两类容器外，STL 还在两类容器的基础上屏蔽一部分功能，突出或增加另一部分功能，实现了三种容器适配器：栈 stack、队列 queue、优先级队列 priority_queue。
 
 容器都是类模板。它们实例化后就成为容器类。用容器类定义的对象称为容器对象。
 
