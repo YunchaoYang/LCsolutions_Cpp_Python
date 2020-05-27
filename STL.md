@@ -10,8 +10,17 @@ C++ STL（标准模板库）是一套功能强大的 C++ 模板类，提供了�
 
 容器=数据结构+算法。
 STL容器
-(1) 顺序容器类, 
-*Eg. vector  数组。查询快，插入慢。deque 数组,采用哈希映射。list 链表 ,插入快，查询慢。
+(1) 顺序容器(Sequence Container) 
+* Eg. vector  数组。查询快，插入慢。deque 数组,采用哈希映射。list 链表 ,插入快，查询慢。
+顺序容器的共同函数
+函数	描述
+assign(n, elem)	将指定元素elem的n份拷贝加入(赋值)到容器中
+assign(begin, end)	将迭代器[beg，end)间的元素赋值给当前容器
+push_back(elem)	将元素附加到容器
+pop_back()	删除容器尾元素
+front	返回容器首元素
+back()	返回容器尾元素
+insert(position, elem)	将元素插入到容器指定位置
 
 (2) 关联式容器
 set  元素不能重复
@@ -19,7 +28,35 @@ set  元素不能重复
 multiset  可以重复
 map 存储有序，根据键来排序，不能重复
 multimap 与map相同，可以重复
-(3).
+(3). 容器适配器
+Eg. stack
+头文件: #include <stack> 定义：stack<data_type> stack_name;
+如：stack <int> s; 操作： empty() -- 返回bool型，表示栈内是否为空 (s.empty() )
+
+size() -- 返回栈内元素个数 (s.size() )
+
+top() -- 返回栈顶元素值 (s.top() )
+
+pop() -- 移除栈顶元素(s.pop(); )
+
+push(data_type a) -- 向栈压入一个元素 a(s.push(a); )
+
+queue(队列，先进先出)
+头文件: #include <queue>
+ 
+定义：queue <data_type> queue_name; 如：queue <int> q; 操作： empty() -- 返回bool型，表示queue是否为空 (q.empty() )
+
+size() -- 返回queue内元素个数 (q.size() )
+
+front() -- 返回queue内的下一个元素 (q.front() )
+
+back() -- 返回queue内的最后一个元素(q.back() )
+
+pop() -- 移除queue中的一个元素(q.pop(); )
+
+push(data_type a) -- 将一个元素a置入queue中(q.push(a); )
+
+
 | C++ 标准库 | |
 |--------|-----------|
 | **标准函数库** | 由通用的、独立的、不属于任何类的函数组成的。函数库继承自 C 语言。| 
