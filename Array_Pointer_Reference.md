@@ -12,11 +12,11 @@ Dynamic array:
 ```cpp
 p = new int[n]
 for (sum = p[0], i=1; i<n; i ++ )
-    sum += p[i];
+    sum += p[i]; // use array notation
 for (sum = *p, i=1; i < n; i++)
-    sum +=*p(i+1);
+    sum +=*p(i+1); //use pointer
 for (sum = *p, q=p+1; q < p+n; q++)
-    sum +=*q;
+    sum +=*q; // use two pointers
 delete [] p   ; 
 ```
 
