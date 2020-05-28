@@ -4,11 +4,20 @@
 
 Static array:
 ```cpp
-int a[5],p 
+int a[5],p;
+char c[5];
+long l[5];
 ```
 Dynamic array:
 ```cpp
 p = new int[n]
+for (sum = p[0], i=1; i<n; i ++ )
+    sum += p[i];
+for (sum = *p, i=1; i < n; i++)
+    sum +=*p(i+1);
+for (sum = *p, q=p+1; q < p+n; q++)
+    sum +=*q;
+delete [] p   ; 
 ```
 
 ```cpp
