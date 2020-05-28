@@ -1,3 +1,16 @@
+
+* Array name is a fixed pointer to the beginning of a block of memories
+* 
+
+Static array:
+```cpp
+int a[5],p 
+```
+Dynamic array:
+```cpp
+p = new int[n]
+```
+
 ```cpp
     int a = 3;
     int b = 4;
