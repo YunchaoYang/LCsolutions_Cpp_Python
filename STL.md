@@ -1,6 +1,8 @@
 C++ STL（Standard Template Library 标准模板库）是一套功能强大的 C++ 模板类，提供了通用的模板类和函数，这些模板类和函数可以实现多种流行和常用的算法和数据结构，
 如向量、链表、队列、栈。
 
+http://www.cplusplus.com/reference/stl/
+
 | 组件	| 描述 |
 |--------|-----------|
 容器（Containers）	|容器是用来管理某一类对象的集合。C++ 提供了各种不同类型的容器，比如 deque、list、vector、map 等。
