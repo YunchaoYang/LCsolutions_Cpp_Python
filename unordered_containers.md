@@ -57,4 +57,7 @@ Container Adaptor:
 ```
 * Array based containers: vector, deque
 * Node based pointers: list, asociative containers + unordered containers.
+
 _Array based containers invalidate pointers: (iterators, and references)_
+
+https://www.youtube.com/watch?v=NNLvY9O7ufU
