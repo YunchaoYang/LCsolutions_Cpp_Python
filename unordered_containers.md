@@ -1,14 +1,14 @@
 Unordered 
 Set or Multiset
 
-![unordered](/unordered_associate_containers.PNG "unordered associative containers")
+![unordered](/unordered_associate_containers.PNG "unordered associative containers", width="150" height="100" )
 
 Hashtable
 Array of linked list
 Hash function
 Buckets:
 Entried
-![unordered_hash](/unordered_associate_containers_hash.PNG "unordered associative containers")
+![unordered_hash](/unordered_associate_containers_hash.PNG "unordered associative containers",width="150" height="100" )
 
 Fast and effective function: 
 ```cpp
