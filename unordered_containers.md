@@ -4,8 +4,8 @@ Set or Multiset
 <img src="unordered_associate_containers.PNG  alt="unordered containers"
 	title="unordered associative containers" width="150" height="100" />
 	
-<img src="unordered_associate_containers.PNG" alt="Kitten"
-	title="A cute kitten" width="150" height="100" />	
+<img src="unordered_associate_containers.PNG" alt="unordered containers"
+	title="unordered associative containers" width="800" height="800" />	
 
 ## Hashtable
 ## Array of linked list
@@ -14,6 +14,8 @@ Set or Multiset
 ## Entried
 
 ![unordered_hash](/unordered_associate_containers_hash.PNG "unordered associative containers" )
+<img src="unordered_associate_containers_hash.PNG" alt="unordered containers"
+	title="unordered associative containers" width="800" height="800" />	
 
 Fast and effective function: 
 ```cpp
