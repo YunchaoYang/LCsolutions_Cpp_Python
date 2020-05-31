@@ -1,13 +1,13 @@
-Unordered 
+# Unordered 
 Set or Multiset
 <img src="unordered_associate_containers.PNG" alt="unordered containers"
 	title="unordered associative containers" width="400" height="200" />	
 
-## Hashtable
-## Array of linked list
-## Hash function
-## Buckets:
-## Entried
+##### Hashtable
+##### Array of linked list
+##### Hash function
+##### Buckets:
+##### Entried
 <img src="unordered_associate_containers_hash.PNG" alt="unordered containers"
 	title="unordered associative containers" width="400" height="200" />	
 
