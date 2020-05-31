@@ -4,7 +4,7 @@ Set or Multiset
 <img src="unordered_associate_containers.PNG  alt="unordered containers"
 	title="unordered associative containers" width="150" height="100" />
 	
-<img src="/media/2018/08/kitten.jpg" alt="Kitten"
+<img src="unordered_associate_containers.PNG" alt="Kitten"
 	title="A cute kitten" width="150" height="100" />	
 
 ## Hashtable
