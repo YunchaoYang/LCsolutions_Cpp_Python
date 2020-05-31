@@ -1,8 +1,8 @@
 Unordered 
 Set or Multiset
 
-![unordered](/unordered_associate_containers.PNG "unordered associative containers", width="150" height="100" )
-
+<img src="unordered_associate_containers.PNG  alt="unordered containers"
+	title="unordered associative containers" width="150" height="100" />
 Hashtable
 Array of linked list
 Hash function
