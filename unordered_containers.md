@@ -3,11 +3,16 @@ Set or Multiset
 
 <img src="unordered_associate_containers.PNG  alt="unordered containers"
 	title="unordered associative containers" width="150" height="100" />
-Hashtable
-Array of linked list
-Hash function
-Buckets:
-Entried
+	
+<img src="/media/2018/08/kitten.jpg" alt="Kitten"
+	title="A cute kitten" width="150" height="100" />	
+
+## Hashtable
+## Array of linked list
+## Hash function
+## Buckets:
+## Entried
+
 ![unordered_hash](/unordered_associate_containers_hash.PNG "unordered associative containers" )
 
 Fast and effective function: 
