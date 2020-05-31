@@ -8,7 +8,7 @@ Array of linked list
 Hash function
 Buckets:
 Entried
-![unordered_hash](/unordered_associate_containers_hash.PNG "unordered associative containers",width="150" height="100" )
+![unordered_hash](/unordered_associate_containers_hash.PNG "unordered associative containers" )
 
 Fast and effective function: 
 ```cpp
