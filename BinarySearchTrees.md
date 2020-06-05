@@ -29,7 +29,6 @@ https://www.geeksforgeeks.org/why-is-binary-heap-preferred-over-bst-for-priority
 
 ## BST search 
 
-
 ## BES insert
 
 ## Tree shape
@@ -38,5 +37,20 @@ https://www.geeksforgeeks.org/why-is-binary-heap-preferred-over-bst-for-priority
 
 ## BSTs: mathematical analysis
 
+### min max
 
+### floor
 
+### subtree counts
+
+### Rank
+
+### Inorder tranversal
+recursively iterator 
+
+|key|val|
+|-------|-------|
+
+#### Traverse left subtree
+#### enqueue key
+#### Traverse right subtree
