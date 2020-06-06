@@ -9,4 +9,4 @@ Keep the cluster small.
 
 Note. Arry size M must be greater than the number of key-value pairs N.
 
-Knuth parking problem.
+* Knuth parking problem.
