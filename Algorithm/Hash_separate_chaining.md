@@ -8,7 +8,6 @@ Under uniform hashing assumption, probablitity taht the number of kesy in a list
 is within a constant factor of N/M is exteremely cloase to 1
 
 * Proof sketch: Distribution of list size obeys a binomial distribution
-<font color='red'>binomial distribution</font>
-
+<p>Some Markdown text with <span style="color:blue">some <em>blue</em> text</span>.</p>
 Hash Node Data Type
 
