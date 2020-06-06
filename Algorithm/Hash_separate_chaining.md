@@ -18,165 +18,100 @@ is within a constant factor of N/M is exteremely cloase to 1
 
 `index = hash % array_size`
 
-Sample code from greek
+Sample code from geeksforgeeks
+https://www.geeksforgeeks.org/hashtables-chaining-with-doubly-linked-lists/
+https://www.geeksforgeeks.org/c-program-hashing-chaining/
+https://www.geeksforgeeks.org/program-to-implement-separate-chaining-in-c-stl-without-the-use-of-pointers/
+
 ```cpp
-// C++ implementation of Hashtable 
-// using doubly linked list 
-#include <bits/stdc++.h> 
-using namespace std; 
+// CPP program to implement hashing with chaining
+#include<bits/stdc++.h> //#include <bits/stdc++.h> is an implementation file for a precompiled header.
+using namespace std;
 
-const int tablesize = 25; 
+class Hash
+{
+	int BUCKET; // No. of buckets
 
-// declaration of node 
-struct hash_node { 
-	int val, key; 
-	hash_node* next; 
-	hash_node* prev; 
-}; 
+	// Pointer to an array containing buckets
+	list<int> *table;
+public:
+	Hash(int V); // Constructor
 
-// hashmap's declaration 
-class HashMap { 
-public: 
-	hash_node **hashtable, **top; 
+	// inserts a key into hash table
+	void insertItem(int x);
 
-	// constructor 
-	HashMap() 
-	{ 
-		// create a empty hashtable 
-		hashtable = new hash_node*[tablesize]; 
-		top = new hash_node*[tablesize]; 
-		for (int i = 0; i < tablesize; i++) { 
-			hashtable[i] = NULL; 
-			top[i] = NULL; 
-		} 
-	} 
+	// deletes a key from hash table
+	void deleteItem(int key);
 
-	// destructor 
-	~HashMap() 
-	{ 
-		delete[] hashtable; 
-	} 
+	// hash function to map values to key
+	int hashFunction(int x) {
+		return (x % BUCKET);
+	}
 
-	// hash function definition 
-	int HashFunc(int key) 
-	{ 
-		return key % tablesize; 
-	} 
+	void displayHash();
+};
 
-	// searching method 
-	void find(int key) 
-	{ 
-		// Applying hashFunc to find 
-		// index for given key 
-		int hash_val = HashFunc(key); 
-		bool flag = false; 
-		hash_node* entry = hashtable[hash_val]; 
+// construction
+Hash::Hash(int b)
+{
+	this->BUCKET = b;
+	table = new list<int>[BUCKET];
+}
 
-		// if hashtable at that index has some 
-		// values stored 
-		if (entry != NULL) { 
-			while (entry != NULL) { 
-				if (entry->key == key) { 
-					flag = true; 
-				} 
-				if (flag) { 
-					cout << "Element found at key "
-						<< key << ": "; 
-					cout << entry->val << endl; 
-				} 
-				entry = entry->next; 
-			} 
-		} 
-		if (!flag) 
-			cout << "No Element found at key "
-				<< key << endl; 
-	} 
+// insertion
+void Hash::insertItem(int key)
+{
+	int index = hashFunction(key);
+	table[index].push_back(key);
+}
 
-	// removing an element 
-	void remove(int key) 
-	{ 
-		// Applying hashFunc to find 
-		// index for given key 
-		int hash_val = HashFunc(key); 
-		hash_node* entry = hashtable[hash_val]; 
-		if (entry->key != key || entry == NULL) { 
-			cout << "Couldn't find any element at this key "
-				<< key << endl; 
-			return; 
-		} 
+void Hash::deleteItem(int key)
+{
+// get the hash index of key
+int index = hashFunction(key);
 
-		// if some values are present at that key & 
-		// traversing the list and removing all values 
-		while (entry != NULL) { 
-			if (entry->next == NULL) { 
-				if (entry->prev == NULL) { 
-					hashtable[hash_val] = NULL; 
-					top[hash_val] = NULL; 
-					delete entry; 
-					break; 
-				} 
-				else { 
-					top[hash_val] = entry->prev; 
-					top[hash_val]->next = NULL; 
-					delete entry; 
-					entry = top[hash_val]; 
-				} 
-			} 
-			entry = entry->next; 
-		} 
-		cout << "Element was successfully removed at the key "
-			<< key << endl; 
-	} 
+// find the key in (index)th list
+list <int> :: iterator i;
+for (i = table[index].begin(); i != table[index].end(); i++) {
+	if (*i == key)
+	break;
+}
 
-	// inserting method 
-	void add(int key, int value) 
-	{ 
-		// Applying hashFunc to find 
-		// index for given key 
-		int hash_val = HashFunc(key); 
-		hash_node* entry = hashtable[hash_val]; 
+// if key is found in hash table, remove it
+if (i != table[index].end())
+	table[index].erase(i);
+}
 
-		// if key has no value stored 
-		if (entry == NULL) { 
-			// creating new node 
-			entry = new hash_node; 
-			entry->val = value; 
-			entry->key = key; 
-			entry->next = NULL; 
-			entry->prev = NULL; 
-			hashtable[hash_val] = entry; 
-			top[hash_val] = entry; 
-		} 
+// function to display hash table
+void Hash::displayHash() {
+for (int i = 0; i < BUCKET; i++) {
+	cout << i;
+	for (auto x : table[i])
+	cout << " --> " << x;
+	cout << endl;
+}
+}
 
-		// if some values are present 
-		else { 
-			// traversing till the end of 
-			// the list 
-			while (entry != NULL) 
-				entry = entry->next; 
+// Driver program
+int main()
+{
+// array that contains keys to be mapped
+int a[] = {15, 11, 27, 8, 12};
+int n = sizeof(a)/sizeof(a[0]);
 
-			// creating the new node 
-			entry = new hash_node; 
-			entry->val = value; 
-			entry->key = key; 
-			entry->next = NULL; 
-			entry->prev = top[hash_val]; 
-			top[hash_val]->next = entry; 
-			top[hash_val] = entry; 
-		} 
-		cout << "Value " << value << " was successfully"
-				" added at key " << key << endl; 
-	} 
-}; 
+// insert the keys into the hash table
+Hash h(7); // 7 is count of buckets in
+			// hash table
+for (int i = 0; i < n; i++)
+	h.insertItem(a[i]);
 
-// Driver Code 
-int main() 
-{ 
-	HashMap hash; 
-	hash.add(4, 5); 
-	hash.find(4); 
-	hash.remove(4); 
-	return 0; 
-} 
+// delete 12 from hash table
+h.deleteItem(12);
+
+// display the Hash table
+h.displayHash();
+
+return 0;
+}
 
 ```
