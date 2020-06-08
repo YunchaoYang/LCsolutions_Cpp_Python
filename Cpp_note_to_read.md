@@ -1,5 +1,5 @@
 
-## How to use class in class?
+### How to use class in class?
 ```cpp
 class Point {
  public: double x, y;
@@ -52,4 +52,8 @@ public:
  }
 };
 ```
-## char* vs std:string vs char[] in C++
+### char* vs std:string vs char[] in C++
+https://www.geeksforgeeks.org/char-vs-stdstring-vs-char-c/
+http://cpp.sh/95v
+
+The null character '\0' (also null terminator), abbreviated NUL, is a control character with the value zero.
