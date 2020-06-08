@@ -1,3 +1,5 @@
+
+## How to use class in class?
 ```cpp
 class Point {
  public: double x, y;
