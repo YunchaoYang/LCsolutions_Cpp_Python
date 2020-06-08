@@ -50,3 +50,4 @@ public:
  }
 };
 ```
+## char* vs std:string vs char[] in C++
