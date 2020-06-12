@@ -45,6 +45,19 @@ The |biohazard| symbol must be used on containers used to dispose of medical was
 
 I really like |doctest|.
 
+Autonumbered footnotes are
+possible, like using [#]_ and [#]_.
+
+.. [#] This is the first one.
+.. [#] This is the second one.
+
+They may be assigned 'autonumber
+labels' - for instance,
+[#fourth]_ and [#third]_.
+
+.. [#third] a.k.a. third_
+
+.. [#fourth] a.k.a. fourth_
 Footnote references, like [5]_.
 Note that footnotes may get
 rearranged, e.g., to the bottom of
@@ -55,6 +68,7 @@ the "page".
    
 
 .. include myfile.rst
+
 
 .. note::
 
@@ -75,7 +89,10 @@ the "page".
        print 'This one is not...'
        print '...but this one is.'
        
-       
+External hyperlinks, like `Python
+<http://www.python.org/>`_.
+
+
 Some references:
 
 - https://pythonhosted.org/an_example_pypi_project/sphinx.html
