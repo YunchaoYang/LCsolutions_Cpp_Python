@@ -22,7 +22,46 @@ Images syntax is like this:
    :align:   center
 
    Proof that getting rich is mostly luck.
-   
+
+Here is something I want to talk about::
+
+    def my_fn(foo, bar=True):
+        """A really useful function.
+
+        Returns None
+        """
+
+.. |biohazard| image:: images/biohazard.png
+
+The |biohazard| symbol must be used on containers used to dispose of medical waste.
+
+.. |doctest| replace:: :mod:`doctest`
+
+I really like |doctest|.
+
+
+.. include myfile.rst
+
+.. note::
+
+.. warning::
+
+.. versionadded:: version
+
+.. versionchanged:: version
+
+.. seealso::
+
+.. code-block:: python
+   :emphasize-lines: 3,5
+
+   def some_function():
+       interesting = False
+       print 'This line is highlighted.'
+       print 'This one is not...'
+       print '...but this one is.'
+       
+       
 Some references:
 
 - https://pythonhosted.org/an_example_pypi_project/sphinx.html
