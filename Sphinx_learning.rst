@@ -45,6 +45,14 @@ The |biohazard| symbol must be used on containers used to dispose of medical was
 
 I really like |doctest|.
 
+Footnote references, like [5]_.
+Note that footnotes may get
+rearranged, e.g., to the bottom of
+the "page".
+
+.. [5] A numerical footnote. Note
+   there's no colon after the ``]``.
+   
 
 .. include myfile.rst
 
