@@ -74,4 +74,6 @@ Some references:
 
 - https://github.com/timstaley/sphinx-example
 
+- https://zh-sphinx-doc.readthedocs.io/en/latest/markup/code.html
+
 - https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst
