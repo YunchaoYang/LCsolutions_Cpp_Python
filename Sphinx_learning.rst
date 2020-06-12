@@ -16,6 +16,10 @@ RST grammar:
 
 jumps to another section: `Table of Contents`_
 
+| Line blocks are useful for addresses,
+| verse, and adornment-free lists.
+
+
 Images syntax is like this:
 
 .. figure::  images/sweat.jpg
