@@ -39,6 +39,8 @@ Here is something I want to talk about::
 
 The |biohazard| symbol must be used on containers used to dispose of medical waste.
 
+:download:`An Example Pypi Project<docs/examplepypi.pdf>`
+
 .. |doctest| replace:: :mod:`doctest`
 
 I really like |doctest|.
