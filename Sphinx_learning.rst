@@ -34,14 +34,28 @@ Internal and External Links
 
 .. _begin:
 
+`Python <http://www.python.org/>`_
+
+
 Aliases
 ----------
+.. _Python: http://www.python.org/
+
+OR
+
+.. |longtext| replace:: this is a very very long text to include
+
+and then insert |longtext| wherever needed.
 
 Comments
 ---------
+.. comments
 
 colored boxes: note, seealso, topic, todo, warnings, Sidebar directive
 ---------------------------------------------------
+
+.. seealso:: This is a simple **seealso** note. Other inline directive may be included (e.g., math :math:`\alpha`) but not al of them.
+
 
 Inserting code and Literal blocks
 
