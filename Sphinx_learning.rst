@@ -69,6 +69,13 @@ This is a simple example:
 Maths and Equations with LaTeX
 -----------------------------------
 
+.. math::
+
+    n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k
+    
+:math:`\alpha > \beta`
+
+
 glossary, centered, Field list, index, download
 -----------------------------------------------------
 
