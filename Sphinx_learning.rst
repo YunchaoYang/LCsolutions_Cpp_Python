@@ -6,7 +6,78 @@ Sphinx is a markup formatting engine / ecosystem, originally developed for docum
 
 - Sphinx is designed primarily for creating HTML documentation, but can also create static PDFs etc.
 
-RST grammar: 
+
+    
+reST grammar: 
+================================
+
+reST is mainly based on directives that are defined as follows:
+`rest <http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html>`_
+
+``
+.. <name>:: <arguments>
+    :<option>: <option values>
+
+    content
+``
+
+double backquotes are used to make a text verbatim. 
+
+Example:
+
+.. image:: ../images/test.png
+    :width: 200pt
+
+Internal and External Links
+------------------------------
+`Internal and External links`_
+
+.. _begin:
+
+Aliases
+----------
+
+Comments
+---------
+
+colored boxes: note, seealso, topic, todo, warnings, Sidebar directive
+---------------------------------------------------
+
+Inserting code and Literal blocks
+
+This is a simple example:
+::
+
+    import math
+    print 'import done'
+
+
+Maths and Equations with LaTeX
+-----------------------------------
+
+glossary, centered, Field list, index, download
+-----------------------------------------------------
+
+
+
+Footnote
+------------------------
+Some text that requires a footnote [#f1]_ .
+
+.. rubric:: Footnotes
+
+.. [#f1] Text of the first footnote.
+
+Citations
+-----------
+.. [CIT2002] A citation
+          (as often used in journals).
+          
+and called as follows:
+
+[CIT2002]_
+
+
 **bold** and *italics*
 星号: *text* 是强调 (斜体),
 双星号: **text** 重点强调 (加粗),
@@ -93,6 +164,7 @@ External hyperlinks, like `Python
 <http://www.python.org/>`_.
 
 
+
 Some references:
 
 - https://pythonhosted.org/an_example_pypi_project/sphinx.html
@@ -101,4 +173,4 @@ Some references:
 
 - https://zh-sphinx-doc.readthedocs.io/en/latest/markup/code.html
 
-- https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst
+- http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html
