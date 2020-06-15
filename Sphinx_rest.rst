@@ -4,6 +4,7 @@ Useful resources:
 * pandoc.
 * https://zh-sphinx-doc.readthedocs.io/en/latest/markup/code.html
 * command: 
+
   * ffmpeg -i video.avi -t 10 out%02d.gif
   * find . -name "*.png" -exec bash -c 'convert "$1" "${1%.png}".jpg' - '{}' \;
 
