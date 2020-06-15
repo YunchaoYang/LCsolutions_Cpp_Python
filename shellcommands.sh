@@ -35,7 +35,7 @@ if [1 == 2] then
 
    # How to fix nvidia driver issue
    sudo apt-get remove --purge nvidia-*
-   dmesg
+   # dmesg
 
     # install nvidia
     # sudo apt-get install nvidia-*
