@@ -1,3 +1,11 @@
+
+Useful resources:
+- pandoc.
+- https://zh-sphinx-doc.readthedocs.io/en/latest/markup/code.html
+- command: 
+  ffmpeg -i video.avi -t 10 out%02d.gif
+  find . -name "*.png" -exec bash -c 'convert "$1" "${1%.png}".jpg' - '{}' \;
+
 Sphinx is a markup formatting engine / ecosystem, originally developed for documenting the Python programming language.
 
 - Sphinx uses 'reStructuredText', or 'RST' for short. 
@@ -6,10 +14,12 @@ Sphinx is a markup formatting engine / ecosystem, originally developed for docum
 
 - Sphinx is designed primarily for creating HTML documentation, but can also create static PDFs etc.
 
-
-    
+   
 reST grammar: 
 ================================
+
+How to convert latex file to rest file:
+
 
 reST is mainly based on directives that are defined as follows:
 `rest <http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html>`_
