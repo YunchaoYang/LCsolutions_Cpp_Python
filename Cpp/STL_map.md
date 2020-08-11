@@ -35,7 +35,7 @@ map<int ,string >::iterator l_it;;
 ## map的大小
 Int nSize = mapStudent.size();
 
-9，map的基本操作函数：
+## map的基本操作函数：
 
      C++ maps是一种关联式容器，包含“关键字/值”对
 
@@ -76,4 +76,5 @@ Int nSize = mapStudent.size();
      upper_bound()    返回键值>给定元素的第一个位置
 
      value_comp()     返回比较元素value的函数
+     
      
