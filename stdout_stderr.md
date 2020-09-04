@@ -1,8 +1,11 @@
 How to understand:
 # Shell Script's idiom: 2>&1
 
-`$ cat foo.txt 1> output.txt `# output stdout to output.txt
-`$ cat nop.txt 2> error.txt `# output stderr to error.txt
+- 1>
+`$ cat foo.txt 1> output.txt `# output stdout(1) to output.txt
+
+- 2>
+`$ cat nop.txt 2> error.txt `# output stderr(2) to error.txt
 
 ## stdout.
 A file descriptor is nothing more that a positive integer that represents an open file. 
@@ -19,3 +22,4 @@ $cat foo.txt > output.txt 2>&1
 
 $ cat nop.txt > output.txt 2>&1
 ```
+https://www.brianstorti.com/understanding-shell-script-idiom-redirect/
