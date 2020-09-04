@@ -18,7 +18,10 @@ There are file descriptors for the Standard Output (stdout, 1) and Standard Erro
 You use `&1` to reference the value of the file descriptor 1 (stdout). 
 So when you use `2>&1` you are basically saying 
 “Redirect the stderr to the same place we are redirecting the stdout”.
-(& - get address of 1, similar to C grammar.)
+
+& indicates that what follows is a file descriptor and not a filename. 
+(& - get address of 1, similar to C grammar.) 
+
 ```shell
 $cat foo.txt > output.txt 2>&1
 
