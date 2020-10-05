@@ -47,10 +47,14 @@ extern "C" {
 #endif 
 ```
 # What is name mangling?
-Due to function overloading in C++, C++ compiler will generate a new name for function. 
-see following link for example.
+- Due to function overloading in C++, C++ compiler will generate a new name for function. 
 
-The C language does not support function overloading, So we have to make sure that name of a symbol is not changed, when we link a C code in C++.
+- The C language does not support function overloading, So we have to make sure that name of a symbol is not changed, when we link a C code in C++.
+
+- Different compiler generate different format of compiler generated names, for example,
+![](https://images.slideplayer.com/33/8192611/slides/slide_12.jpg)
+
+see following link for example.
 
 To undertstand name mangling, https://www.tutorialspoint.com/what-is-the-effect-of-extern-c-in-cplusplus
 
