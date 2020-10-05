@@ -1,11 +1,11 @@
 When to use extern "c" in C++ files?
 extern c is only
 
-- use C library in C++
+- use C library in C++, (in declaration of C functions)
 ```c
   extern "C" int foo(int);
 ```
-- export some C++ code to C
+- export some C++ code to C (in defining C++ functions)
 ```cpp
 extern "C" int foo(int) { something; }
 ```
