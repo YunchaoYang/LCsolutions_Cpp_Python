@@ -1,6 +1,4 @@
-When to use extern "C" in C++ files?
-extern c is only
-
+# When to use extern "C" in C++ files?
 - use C library in C++, (in declaration of C functions)
 ```c
   extern "C" int foo(int);
@@ -17,8 +15,28 @@ foo_type f = (foo_type)dlsym(handle,"foo")
 ```
 source:https://stackoverflow.com/questions/1292138/when-to-use-extern-c-in-c
 
+## Example, how to use printf in C++,
 
-What is a good practice of using extern "C"?
+- Right
+
+```cpp
+extern "C"{
+   int printf(const char *format,...);
+}
+main() {
+   printf("Hello World");
+}
+```
+- wrong
+```cpp
+int printf(const char *format,...);
+main() {
+   printf("Hello World");
+}
+```
+Error: undefined reference to printf(char const*, ...)' ld returned 1 exit status
+
+# What is a good practice of using extern "C"?
 ```cpp
 #ifdef __cplusplus  
 extern "C" { 
@@ -28,3 +46,6 @@ extern "C" {
 } 
 #endif 
 ```
+
+To undertstand name mangling, https://www.tutorialspoint.com/what-is-the-effect-of-extern-c-in-cplusplus
+
