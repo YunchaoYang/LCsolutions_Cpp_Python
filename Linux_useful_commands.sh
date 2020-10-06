@@ -15,10 +15,22 @@
    - System Utilities: These are the software functions that allow users to manage the computer.
    - Application Programs: Set of functions designed to perform a set of tasks.
    
-Q #3) Enlist the basic components of LINUX?
+# 3) Enlist the basic components of LINUX?
 
 Answer: Linux operating system basically consists of 3 components. They are:
 
 Kernel: This is considered as the core part and is responsible for all major activities of the Linux operating system. Linux Kernel is considered as free and open-source software that is capable of managing hardware resources for the users. It consists of various modules and interacts directly with the underlying hardware.
 System Library: Most of the functionalities of the operating system are implemented by System Libraries. These act as a special function using which application programs accesses Kernel’s features.
 System Utility: These programs are responsible for performing specialized, individual-level tasks.
+
+# 5) Enlist the features of the Linux operating system?
+
+Answer: Following are some important features of the LINUX operating system:
+
+Linux Kernel and application programs can be installed on any kind of hardware platform and thus are considered portable.
+It serves the purpose of multitasking by serving various functions simultaneously.
+It provides security services in three ways namely, Authentication, Authorization, and Encryption.
+It supports multiple users to access the same system resource but by using different terminals for operation.
+Linux provides a hierarchical file system and its code is freely available to all.
+It has its own application support (to download and install applications) and customized keyboards.
+Linux distros provide live CD/USB to their users for installation.
