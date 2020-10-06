@@ -8,5 +8,6 @@
 |  /sbin        | /opt/bin      | /usr/sbin |
 |               |               | /usr/local/bin |
 |               |               | /usr/share |
+
 ![](https://i.stack.imgur.com/BlpRb.png)
 
