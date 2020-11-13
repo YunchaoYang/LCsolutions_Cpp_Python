@@ -16,4 +16,5 @@ These values are communicated in a shared state, in which the asynchronous task 
 and which may be examined, waited for, and otherwise manipulated by other threads that hold instances of std::future
 or std::shared_future that reference that shared state.
 
+# example and explanation
 https://www.boost.org/doc/libs/1_72_0/doc/html/thread/synchronization.html#thread.synchronization.condvar_ref
