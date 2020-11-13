@@ -1,3 +1,7 @@
+- Q? threading is to define "a block of code" that can be executed in parallel. How to define that? Separate that to process (as in MPI).
+
+- Q?
+
 - thread (C++11)
   - Threads allow multiple functions to execute concurrently. Threads begin execution immediately upon construction of the associated thread
   object (pending any OS scheduling delays), starting at the top-level function provided as a constructor argument. 
@@ -18,3 +22,9 @@ or std::shared_future that reference that shared state.
 
 # example and explanation
 https://www.boost.org/doc/libs/1_72_0/doc/html/thread/synchronization.html#thread.synchronization.condvar_ref
+
+# thread pool vs thread group
+https://en.wikipedia.org/wiki/Thread_pool
+
+# Concurrency pattern
+https://en.wikipedia.org/wiki/Concurrency_pattern
