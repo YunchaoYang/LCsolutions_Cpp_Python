@@ -28,3 +28,12 @@ https://en.wikipedia.org/wiki/Thread_pool
 
 # Concurrency pattern
 https://en.wikipedia.org/wiki/Concurrency_pattern
+
+OpenMP has the advantages of being cross platform, and simpler for some operations. It handles threading in a different manner, in that it gives you higher level threading options, such as parallelization of loops, such as:
+
+```C++
+#pragma omp parallel for
+for (i = 0; i < 500; i++)
+    arr[i] = 2 * i;
+```
+Pthreads is a lower level API for generating threads and synchronization explicitly
