@@ -36,4 +36,5 @@ OpenMP has the advantages of being cross platform, and simpler for some operatio
 for (i = 0; i < 500; i++)
     arr[i] = 2 * i;
 ```
-Pthreads is a lower level API for generating threads and synchronization explicitly
+
+Pthreads is a  `lower level API` for generating threads and synchronization __explicitly__.
