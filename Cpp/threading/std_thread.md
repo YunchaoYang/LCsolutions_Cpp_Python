@@ -29,12 +29,19 @@ https://en.wikipedia.org/wiki/Thread_pool
 # Concurrency pattern
 https://en.wikipedia.org/wiki/Concurrency_pattern
 
-OpenMP has the advantages of being cross platform, and simpler for some operations. It handles threading in a different manner, in that it gives you higher level threading options, such as parallelization of loops, such as:
+# OpenMP vs Pthread.f
+`OpenMP` 
+* higher level, more portable. 
+* Easility scaled than pthreads.
+* use OpenMP, it can be as simple as adding a single pragma, and you'll be 90% of the way to properly multithreaded code with linear speedup. 
 
+such as parallelization of loops, such as:
 ```C++
 #pragma omp parallel for
 for (i = 0; i < 500; i++)
     arr[i] = 2 * i;
 ```
+__Pthreads__
+is a very `low-level API` for working with threads. Thus, you have extremely fine-grained control over thread management (`create/join/etc`), `mutexes`, and so on. It's fairly bare-bones.
 
-Pthreads is a  `lower level API` for generating threads and synchronization __explicitly__.
+https://stackoverflow.com/questions/3949901/pthreads-vs-openmp#:~:text=If%20you%20use%20OpenMP%2C%20it,get%20more%20flexibility%20with%20pthreads.
