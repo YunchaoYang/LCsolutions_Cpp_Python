@@ -30,7 +30,7 @@ https://en.wikipedia.org/wiki/Thread_pool
 https://en.wikipedia.org/wiki/Concurrency_pattern
 
 # OpenMP vs Pthread.f
-`OpenMP` 
+## OpenMP 
 * higher level, more portable. 
 * Easility scaled than pthreads.
 * use OpenMP, it can be as simple as adding a single pragma, and you'll be 90% of the way to properly multithreaded code with linear speedup. 
@@ -41,7 +41,7 @@ such as parallelization of loops, such as:
 for (i = 0; i < 500; i++)
     arr[i] = 2 * i;
 ```
-__Pthreads__
+## Pthreads
 is a very `low-level API` for working with threads. Thus, you have extremely fine-grained control over thread management (`create/join/etc`), `mutexes`, and so on. It's fairly bare-bones.
 
 https://stackoverflow.com/questions/3949901/pthreads-vs-openmp#:~:text=If%20you%20use%20OpenMP%2C%20it,get%20more%20flexibility%20with%20pthreads.
