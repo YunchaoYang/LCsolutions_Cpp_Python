@@ -35,6 +35,9 @@ https://en.wikipedia.org/wiki/Concurrency_pattern
 * Easility scaled than pthreads.
 * use OpenMP, it can be as simple as adding a single pragma, and you'll be 90% of the way to properly multithreaded code with linear speedup. 
 
+OpenMP is an implementation of __multithreading__, a method of parallelizing whereby a primary thread (a series of instructions executed consecutively) forks a specified number of sub-threads and the system divides a task among them. The threads then run concurrently, with the runtime environment allocating threads to different processors.
+
+
 such as parallelization of loops, 
 ```C++
 #pragma omp parallel for
