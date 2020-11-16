@@ -35,12 +35,15 @@ https://en.wikipedia.org/wiki/Concurrency_pattern
 * Easility scaled than pthreads.
 * use OpenMP, it can be as simple as adding a single pragma, and you'll be 90% of the way to properly multithreaded code with linear speedup. 
 
-such as parallelization of loops, such as:
+such as parallelization of loops, 
 ```C++
 #pragma omp parallel for
 for (i = 0; i < 500; i++)
     arr[i] = 2 * i;
 ```
+
+https://en.wikipedia.org/wiki/OpenMP#Pros_and_cons
+
 ## Pthreads
 is a very `low-level API` for working with threads. Thus, you have extremely fine-grained control over thread management (`create/join/etc`), `mutexes`, and so on. It's fairly bare-bones.
 
