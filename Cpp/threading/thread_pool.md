@@ -115,4 +115,115 @@ boost::thread有两个构造函数：
 （2）explicit thread(const boost::function0<void>& threadfunc)： 
 * boost::function0<void>可以简单看为：一个无返回(返回void)，无参数的函数。这里的函数也可以是类重载operator()构成的函数；该构造函数传入的是函数对象而并非是函数指针，这样一个具有一般函数特性的类也能作为参数传入.
  https://blog.csdn.net/jack_20/article/details/79892250?utm_source=blogxgwz0&utm_medium=distribute.pc_relevant.none-task-blog-title-6&spm=1001.2101.3001.4242
+第一种方式：最简单方法 
+```cpp
+  void hello(){}
+  int main(){
+    boost::thread thrd(&hello);
+    thrd.join(); 
+  } 
+```
+第二种方式：复杂类型对象作为参数来创建线程： 
+
+第三种方式：在类内部创建线程； 
+（1）类内部静态方法启动线程,在这里start()和hello()方法都必须是static方法。 
+（2）如果要求start()和hello()方法不能是静态方法则采用下面的方法创建线程： 
+
+第四种方法：用类内部函数在类外部创建线程；如果线程需要绑定的函数有参数则需要使用boost::bind
+
+https://blog.csdn.net/sinat_33098791/article/details/52447022?utm_medium=distribute.pc_relevant.none-task-blog-title-11&spm=1001.2101.3001.4242
+一． 使用boost::thread创建线程
+
+由于每一个boost::thread对应一个线程，所以创建线程就是创建一个boost::thread对象。
+
+template
+
+thread(Callable func);
+
+这里需要一个函数对象（函数指针、仿函数）
+
+A 仿函数
+struct callable
+{
+       void operator()(void){}
+}
+boost::thread thread_call(struct callable);
+
+B.全局函数. 
+void func(){}
+boost::thread thread_func(func);
+
+C. 类成员函数
+
+借助boost::bind 轻松实现
+
+D. 含参函数对象
+
+void func_arg(int num) {}
+boost::thread thread_arg_bind(boost::bind(&func_arg,1012));
+boost::thread thread_arg(func_arg,2012);
+
+
+二． 线程的管理
+
+A. 线程标识符
+在boost中也有唯一标识线程的数据结构：thread::id。
+
+B. 线程的分离与非分离
+Boos::thread线程的默认属性为非分离状态,线程结束后线程标识符、线程退出状态等信息需要通过join方法回收。
+Join方法会阻塞，直到该线程执行结束。
+Join函数是boost::thread中少数几个会抛出异常的方法之一。当join函数过程中如果 interrupt() 方法被调用，join函数会抛出一个boost::thread_interrupted异常。例外bool timed_join(TimeDuration const& rel_time);方法阻塞特定的时间，如果超时了但线程仍未退出，则返回false。当用户并不关心线程的退出状态时，可以设置thread状态为分离，这样boost::thread会自动回收线程资源。
+bool joinable() 方法返回线程是否是分离状态。
+
+C 线程的休眠和中断
+
+boost::thread 中提供一个静态方法
+```cpp
+void boost::thread::sleep(system_time const& abs_time);
+```
+线程将休眠直到时间超时。
+sleep 函数是boost::thread中少数几个可能抛出异常的方法之一：
+当sleep休眠期间interrupt() 方法被调用，sleep会抛出一个boost::thread_interrupted异常。
+去了sleep()，boost::thread提供一个void yield();方法主动放弃当前的CPU时间片。
+
+D. 线程组
+
+```cpp
+#include 
+
+class thread_group:
+   private noncopyable
+{
+public:
+    thread_group();
+    ~thread_group();
+    template
+    thread* create_thread(F threadfunc);
+    void add_thread(thread* thrd);
+    void remove_thread(thread* thrd);
+    void join_all();
+    void interrupt_all();
+    int size() const;
+};
+```
+例子：
+```cpp
+thread_group var_thread_group;
+//! 利用thread_group创建线程
+boost::thread* pthread_one var_thread_group.create_thread(func);
+
+//!加入线程组
+var_thread_group.add_thread(pthread_one);
+var_thread_group.add_thread(var_thread_group.create_thread(struct callable));
+```
+
+
+
+
+
+
+
+
+
+
   
