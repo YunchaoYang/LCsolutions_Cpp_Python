@@ -206,8 +206,10 @@ public:
     int size() const;
 };
 ```
+
 例子：
-```cpp
+
+```c++
 thread_group var_thread_group;
 //! 利用thread_group创建线程
 boost::thread* pthread_one var_thread_group.create_thread(func);
