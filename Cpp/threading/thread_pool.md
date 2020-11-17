@@ -209,7 +209,7 @@ public:
 
 例子：
 
-```c++
+``` cpp
 thread_group var_thread_group;
 //! 利用thread_group创建线程
 boost::thread* pthread_one var_thread_group.create_thread(func);
@@ -217,8 +217,15 @@ boost::thread* pthread_one var_thread_group.create_thread(func);
 //!加入线程组
 var_thread_group.add_thread(pthread_one);
 var_thread_group.add_thread(var_thread_group.create_thread(struct callable));
+
 ```
 
+```cpp
+boost::thread_group group;
+boost::thread *t1 = new boost::thread( boost::bind( &threaded_function));
+group.add_thread( t1);
+```
+Where is the bind function? If no bind, how is it called?
 
 
 
