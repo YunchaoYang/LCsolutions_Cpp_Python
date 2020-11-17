@@ -49,3 +49,70 @@ boost::thread *mythread = new boost::thread(&threadfunc);
 ```
 
 跟 一般不同的是，Boost Thread是接受Boost Function來當作thread的進入點，而不是一般的function pointer而已，上面範例的function pointer只是Boost Function的其中一種type而已, 所以, 我們可以輕鬆做到以下這種事：
+```cpp
+struct MyClass
+{
+ void threadfunc() {// do something}
+};
+ 
+int main()
+{
+  MyClass m;
+  boost::thread mythread(boost::bind(&MyClass::threadfunc, &m));
+  // Wait for the thread...
+}
+```
+直 接把non-static member function當成thread的進入點！！在以前pthread的時代，想要跑non-static member function非常麻煩，通常要寫個static wrapper之類的......拜Boost Function和Boost Bind之賜，這兩者與Boost Thread的完美結合，讓C++ programmer的生活更輕鬆了！！
+
+
+有人可能已經發現了，Boost Thread在創造thread的時候，沒有地方可以傳參數進去阿！！Well，有了Boost Bind，這根本就不是問題，還能做的比以前更好。
+```cpp
+struct MyClass
+{
+  void threadfunc(int a, double b) {}
+};
+ 
+int main()
+{
+  MyClass m;
+  boost::thread mythread(
+      boost::bind(&MyClass::threadfunc, &m, 1, 2.2));
+// Wait for the thread
+}
+```
+
+
+2. Mutex的概念
+
+以前在pthread我們都會這樣來使用mutex
+
+```cpp
+// declare mutex
+pthread_mutex_t m;
+pthread_mutex_init(&m, NULL);
+ 
+void threadfunc(void* param)
+ pthread_mutex_lock(&m);
+ // Only one can enter here...
+ pthread_mutex_unlock(&m);
+}
+```
+
+Boost Thread則是把lock當成一個物件，建構出來時表示鎖住一個mutex，解構表示解鎖一個mutex。
+
+```cpp
+// declare mutex
+boost::mutex m;
+ 
+void threadfunc()
+ boost::mutex::scoped_lock lock(m);
+ // On exiting this function, the mutex is unlocked
+}
+```
+
+boost::thread有两个构造函数： 
+（1）thread()：构造一个表示当前执行线程的线程对象； 
+（2）explicit thread(const boost::function0<void>& threadfunc)： 
+* boost::function0<void>可以简单看为：一个无返回(返回void)，无参数的函数。这里的函数也可以是类重载operator()构成的函数；该构造函数传入的是函数对象而并非是函数指针，这样一个具有一般函数特性的类也能作为参数传入.
+ https://blog.csdn.net/jack_20/article/details/79892250?utm_source=blogxgwz0&utm_medium=distribute.pc_relevant.none-task-blog-title-6&spm=1001.2101.3001.4242
+  
