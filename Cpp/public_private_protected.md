@@ -38,4 +38,4 @@
   * use public member function in the same class. Or use friend function 
 
 * What is the difference between public and protected?
-  * how members can be accessed and inheritented class.
+  * The way how members can be accessed and in derived class.
