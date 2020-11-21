@@ -1,11 +1,3 @@
-  ```cpp
- class Base
- {
-  public: var
-
-  private:
-``` 
-
 * Questions: What it the difference between public, private and protected?  
    * 1) Accessible 三种访问权限
        * `public` - can be accessed by objects in public. protected: 可以被该类中的函数、子类的函数、其友元函数访问,也可以由该类的对象访问 
@@ -34,7 +26,7 @@
 |-----------------|-----------|---------|
 |public |＆ public继承 |=> public|
 |public |＆ protected继承| => protected|
-|public |＆ private继承| |= > private|
+|public |＆ private继承 |= > private|
 |protected |＆ public继承 |=> protected|
 |protected |＆ protected继承 |=> protected|
 |protected |＆ private继承 |= > private|
@@ -42,6 +34,8 @@
 |private |＆ protected继承 |=> 子类无权访问|
 |private |＆ private继承 |= > 子类无权访问|
 
+* How to access private member?
+  * use public member function in the same class. Or use friend function 
 
-* How to access public, private, protected member?
 * What is the difference between public and protected?
+  * how members can be accessed and inheritented class.
