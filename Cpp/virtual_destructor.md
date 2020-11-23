@@ -1,5 +1,20 @@
-virtual 析构函数
-
+#### virtual 析构函数
+```cpp
+class Base{ 
+public:
+  virtual ~Base(){cout<<"~B"<<endl;}; 
+} 
+ 
+class Derived:public Base{ 
+public:
+  virtual ~Derived(){cout<<"~D"<<endl;}; 
+} 
+ 
+void main (){ 
+  Base *b=new Derived();
+  delete b; 
+} 
+```
 #### 析构函数写成virtual的好处[](https://blog.csdn.net/heibao111728/article/details/80814313?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control)
 相信学习c++的很多同志都听过这样的建议：最好将类的析构函数写成虚函数，如下：
 ```cpp
