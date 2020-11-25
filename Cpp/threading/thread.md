@@ -20,6 +20,29 @@ These values are communicated in a shared state, in which the asynchronous task 
 and which may be examined, waited for, and otherwise manipulated by other threads that hold instances of std::future
 or std::shared_future that reference that shared state.
 
+### Thread Local Storage
+- Remember, all threads share the `same heap` although they each have their `own stack`
+- Therefore any data element that is not automatic scope is by definition global to all threads
+- Thread Local Storage is a mechanism that creates a unique variable for each thread
+
+Thread Local Storage can be created at a variety of different scope levels:
+ - namespace level (outside any class or function)
+ - static class data member (static inside a class) `static thread_local std::string str;`
+ - an automatic thread local variable inside a function `thread_local std::vector<int> v;`
+
+### How Condition Variables Work
+
+ 1. A thread locks a mutex associated with a condition variable
+ 2. The thread tests the condition to see if it can proceed
+ 3.1 If it can (the condition variable is true):
+    1. your thread does its work
+    2. your thread unlocks the mutex
+ 3.2 If it cannot (the condition variable is false)
+    1. the thread sleeps by calling cond_wait(&c,&m), and the mutex is automatically released for you
+    2. some other thread calls cond_signal(&c) to indicate the condition is true
+    3. your thread wakes up from waiting with the mutex automatically locked, and it does its work
+    4. your thread releases the mutex when it’s done
+
 ### [Some example and explanation](https://www.boost.org/doc/libs/1_72_0/doc/html/thread/synchronization.html#thread.synchronization.condvar_ref)
 
 ### [thread pool](https://en.wikipedia.org/wiki/Thread_pool)
