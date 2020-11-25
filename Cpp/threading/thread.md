@@ -34,10 +34,10 @@ Thread Local Storage can be created at a variety of different scope levels:
 
  1. A thread locks a mutex associated with a condition variable
  2. The thread tests the condition to see if it can proceed
- 3.1 If it can (the condition variable is true):
+ 3. #1) If it can (the condition variable is true):
     1. your thread does its work
     2. your thread unlocks the mutex
- 3.2 If it cannot (the condition variable is false)
+ 3. #2) If it cannot (the condition variable is false)
     1. the thread sleeps by calling cond_wait(&c,&m), and the mutex is automatically released for you
     2. some other thread calls cond_signal(&c) to indicate the condition is true
     3. your thread wakes up from waiting with the mutex automatically locked, and it does its work
