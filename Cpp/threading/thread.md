@@ -20,11 +20,10 @@ These values are communicated in a shared state, in which the asynchronous task 
 and which may be examined, waited for, and otherwise manipulated by other threads that hold instances of std::future
 or std::shared_future that reference that shared state.
 
-### example and explanation
-https://www.boost.org/doc/libs/1_72_0/doc/html/thread/synchronization.html#thread.synchronization.condvar_ref
+### example and explanation[]
+(https://www.boost.org/doc/libs/1_72_0/doc/html/thread/synchronization.html#thread.synchronization.condvar_ref)
 
-### thread pool vs thread group
-https://en.wikipedia.org/wiki/Thread_pool
+### thread pool vs thread group[](https://en.wikipedia.org/wiki/Thread_pool)
 
 
 ## Thread
@@ -35,9 +34,9 @@ Each of the std::thread object can be associated with a thread.
 What std::thread accepts in constructor ?
 We can attach a callback with the std::thread object, that will be executed when this new thread starts. These callbacks can be,
 
-1.) Function Pointer
-2.) Function Objects
-3.) Lambda functions
+- 1.) Function Pointer
+- 2.) Function Objects
+- 3.) Lambda functions
 
 Thread objects can be created like this,
 ```cpp
