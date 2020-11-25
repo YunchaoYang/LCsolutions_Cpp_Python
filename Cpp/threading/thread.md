@@ -20,14 +20,35 @@ These values are communicated in a shared state, in which the asynchronous task 
 and which may be examined, waited for, and otherwise manipulated by other threads that hold instances of std::future
 or std::shared_future that reference that shared state.
 
-# example and explanation
+### example and explanation
 https://www.boost.org/doc/libs/1_72_0/doc/html/thread/synchronization.html#thread.synchronization.condvar_ref
 
-# thread pool vs thread group
+### thread pool vs thread group
 https://en.wikipedia.org/wiki/Thread_pool
 
-# Concurrency pattern
-https://en.wikipedia.org/wiki/Concurrency_pattern
+
+## Thread
+In every C++ application there is one default main thread i.e. main() function. In C++ 11 we can create additional threads by creating objects of std::thread class.
+Each of the std::thread object can be associated with a thread.
+[](https://thispointer.com/c-11-multithreading-part-1-three-different-ways-to-create-threads/)
+
+What std::thread accepts in constructor ?
+We can attach a callback with the std::thread object, that will be executed when this new thread starts. These callbacks can be,
+
+1.) Function Pointer
+2.) Function Objects
+3.) Lambda functions
+
+Thread objects can be created like this,
+```cpp
+std::thread thObj(<CALLBACK>);
+```
+
+### Pass Arguments to Threads
+To Pass arguments to thread’s associated callable object or function just pass additional arguments to the std::thread constructor. By default all arguments are copied into the `internal storage of new thread`.
+
+- Don’t pass addresses of variables from local stack to thread’s callback function. Because it might be possible that local variable in Thread 1 goes out of scope but Thread 2 is still trying to access it through it’s address.
+
 
 # OpenMP vs Pthread.f
 ## OpenMP 
