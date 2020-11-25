@@ -47,15 +47,15 @@ New Thread will start just after the creation of new object and will execute the
 ### Differentiating between threads
 
 - `std::thread::get_id()`
-Member function, gives id of _associated thread object_ i.e.
-`std::thread::get_id()`
+  - Member function, gives id of _associated thread object_ i.e.
+
 If std::thread object does not have an associated thread then get_id() will return a default constructed std::thread::id object i.e. ``not any thread.``
 
 - `std::this_thread::get_id()`
-To get the identifier for the _current thread_ use,
+  - To get the identifier for the _current thread_ use,
 
 - `std::thread::id`
-`std::thread::id` is a Object, it can be compared and printed on console too. 
+  - is a Object, it can be compared and printed on console too. 
 
 ### Pass Arguments to Threads
 To Pass arguments to thread’s associated callable object or function just pass additional arguments to the std::thread constructor. By default all arguments are copied into the `internal storage of new thread`.
