@@ -22,7 +22,7 @@ or std::shared_future that reference that shared state.
 
 ### [Some example and explanation](https://www.boost.org/doc/libs/1_72_0/doc/html/thread/synchronization.html#thread.synchronization.condvar_ref)
 
-###[thread pool](https://en.wikipedia.org/wiki/Thread_pool)
+### [thread pool](https://en.wikipedia.org/wiki/Thread_pool)
 - thread pool vs thread group
 
 ## Thread
@@ -41,6 +41,21 @@ Thread objects can be created like this,
 ```cpp
 std::thread thObj(<CALLBACK>);
 ```
+New Thread will start just after the creation of new object and will execute the passed callback in parallel to thread that has started it. Moreover, any thread can wait for another to exit by calling join() function on that thread’s object.
+
+
+### Differentiating between threads
+
+- `std::thread::get_id()`
+Member function, gives id of _associated thread object_ i.e.
+`std::thread::get_id()`
+If std::thread object does not have an associated thread then get_id() will return a default constructed std::thread::id object i.e. ``not any thread.``
+
+- `std::this_thread::get_id()`
+To get the identifier for the _current thread_ use,
+
+- `std::thread::id`
+`std::thread::id` is a Object, it can be compared and printed on console too. 
 
 ### Pass Arguments to Threads
 To Pass arguments to thread’s associated callable object or function just pass additional arguments to the std::thread constructor. By default all arguments are copied into the `internal storage of new thread`.
