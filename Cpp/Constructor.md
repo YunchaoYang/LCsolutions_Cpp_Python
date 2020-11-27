@@ -34,9 +34,6 @@
 
 通常，单个参数的构造函数会加上explicit关键字，这样可以避免很多错误，防止隐式的类型转换。当需要进行类型转换时，显式的使用类型转换会让代码更加清晰明了。
 
-
-
-
 ## Copy Constructor 拷贝构造函数
 复制构造函数是指只有一个参数，且参数为类对象的引用的构造函数。形为` Test(Test& ap){}`。
 
@@ -88,8 +85,11 @@ cout << p2.getAge() << endl;
     * 两个都已经初始化，再调用"="就是赋值了。
 
 
-### 禁用Copy Constructor
-把Copy Constructor设置为private?
+### 禁用 Copy Constructor, Copy assignment operator, destructor, default constructor.
+把Copy Constructor设置为private? in (c++03)
+or make it a delete function in (c++11).
+
+https://www.youtube.com/watch?v=EL30-a2gblQ&list=PLE28375D4AC946CC3&index=5
 
 ```cpp
 #include<iostream> 
@@ -123,3 +123,4 @@ int main()
 ```
 
 https://www.geeksforgeeks.org/constructors-c/?ref=lbp
+
