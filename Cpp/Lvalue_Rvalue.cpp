@@ -1,6 +1,7 @@
 /*
+表示该值的存储地址属性
 * lvalue - an object that occupies some identifieable location in memory 
-* rvalue - not a lavlue
+* rvalue - not a lavlue, rvalue不能取地址
 */
 
 //1. Lvalue example
