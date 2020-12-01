@@ -16,3 +16,35 @@ inline的使用是有所限制的，inline只适合涵数体内代码简单的�
 而inline却意味着"在编译阶段，将调用动作以被调用函数的主体取代之"。
 如果编译器做决定时，尚不知道该调用哪一个函数，你就很难责成他们做出一个inline函数。
 
+### 建议
+
+(1) inline函数的定义放在头文件header中
+
+inline 在大多数 C++ 程序中是编译行为。其次，因为内联函数要在调用点展开，所以编译器必须随处可见内联函数的定义，要不然就成了非内联函数的调用了。
+所以，这要求每个调用了内联函数的文件都出现了该内联函数的定义。
+
+(2) 声明跟定义要一致
+如果在每个文件里都实现一次该内联函数的话，那么，最好保证每个定义都是一样的，否则，将会引起未定义的行为。
+
+
+(3) 内联能提高函数的执行效率，为什么不把所有的函数都定义成内联函数？如果所有的函数都是内联函数，还用得着“内联”这个关键字吗？
+
+内联是以代码膨胀（复制）为代价，仅仅省去了函数调用的开销，从而提高函数的执行效率。 如果执行函数体内代码的时间，相比于函数调用的开销较大，那么效率的收获会很少。另一方面，每一处内联函数的调用都要复制代码，将使程序的总代码量增大，消耗更多的内存空间。
+以下情况不宜使用内联： 
+(1) 如果函数体内的代码比较长，使用内联将导致内存消耗代价较高。 
+(2) 如果函数体内出现循环，那么执行函数体内代码的时间要比函数调用的开销大。
+(3)  类的构造函数和析构函数容易让人误解成使用内联更有效。要当心构造函数和析构函数可能会隐藏一些行为，如“偷偷地”执行了基类或成员对象的构造函数和析构函数。所以不要随便地将构造函数和析构函数的定义体放在类声明中。
+
+
+(4) 对于形似函数的宏,最好改用inline函数替换#define。
+
+```cpp
+    //标准的max template（来自<algorithm>）往往是这样实现出来的：
+    template <typename T>
+    inline const T& std::max(const T& a,const T& b)
+    {return a<b?b:a}
+```
+
+[reference]
+* [1](https://blog.csdn.net/u011857683/article/details/81606433?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522160682217619195271654251%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=160682217619195271654251&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-81606433.pc_first_rank_v2_rank_v28&utm_term=inline&spm=1018.2118.3001.4449)
+* [1](https://blog.csdn.net/weixin_44671032/article/details/96010740?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control)
