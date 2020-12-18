@@ -59,6 +59,45 @@ XML文件引入DTD文件，这样XML可以自定义标签，但又受到DTD文�
 ```
 ### XML文件约束- XML Schema
 
+```xml
+<?xml version="1.0" encoding="GB2312"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="employee" type="empType"/>     ①
+ <xs:complexType name="empType">         ②
+<xs:sequence>            ③
+<xs:element name="name" type="xs:string"/>    ④
+<xs:element name="age" type="xs:positiveInteger"/>  ⑤
+<xs:element name="email">        ⑥
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:pattern         ⑦
+value="[a-z0-9A-Z]+([-|\.]?[a-z0-9A-Z])*@([a-z0-9A-Z]+
+(-[a-z0-9A-Z]+)?\.)+ [a-zA-Z]{2,}"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="sn" type="xs:string" use="required"/> ⑧
+</xs:complexType>
+</xs:schema>
+```
+① 使用XSDL中的xs:element元素来声明employee元素，它的类型为empType，这是自定义的类型，在②处定义。
+
+② 使用XSDL中的xs:complexType元素来定义复杂类型，属性name指定自定义类型的名字，该名字可以被xs:element元素的type属性所引用。
+
+③ XSDL中的xs:sequence元素用于指定在它内部声明的元素必须按照声明的顺序出现。①、②、③合起来与例4-4中的①（<!ELEMENT employee (name,age,email)>）对应。
+
+④ 声明name元素，其内容只能是字符串值。与例4-4中的②（<!ELEMENT name (#PCDATA)>）对应。
+
+⑤ 声明age元素，其内容只能是正整数。与例4-4中的③（<!ELEMENT age (#PCDATA)>）对应。
+
+⑥ 声明email元素，使用正则表达式对email元素的内容做了限定，要求内容必须符合邮件格式的规范。与例4-4中的④（<!ELEMENT email (#PCDATA)>）对应。
+
+⑦ XSDL中的xs:pattern元素使用正则表达式来限制值的范围。
+
+⑧ 声明sn属性，属性值是字符串，该属性是必需的（use="required"）。与例4-4中的⑤（<!ATTLIST employee sn CDATA #REQUIRED>）对应。
+
+
 ### DOM 详解
 xml文件多用于信息的描述，所以在得到一个xml文档之后按照xml中的元素取出对应的信息就是xml的解析。Xml解析有两种方式，一种是DOM解析，另一种是SAX解析，两种操作的方式如图。
 基于DOM解析的xml分析器是将其转换为一个对象模型的集合，用树这种数据结构对信息进行储存。通过DOM接口，应用程序可以在任何时候访问xml文档中的任何一部分数据，因此这种利用DOM接口访问的方式也被称为随机访问。
