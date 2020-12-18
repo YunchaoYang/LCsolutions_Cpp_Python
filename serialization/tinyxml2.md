@@ -1,5 +1,7 @@
 源码 https://github.com/leethomason/tinyxml2
 
+简单地说，TinyXML解析一个XML文档并由此生成一个可读可修改可保存的文档对象模型（DOM）。
+
 tinyXML2是一个开源、简单、小巧、高效的C++ XML解析器，它只有一个.h文件和一个.cpp文件组成，可以轻松集成到其它程序中。
 
 它解析XML文档并从中构建可以读取、修改和保存的文档对象模型(Document Object Model, DOM)。
