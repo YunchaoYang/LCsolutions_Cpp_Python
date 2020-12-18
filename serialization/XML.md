@@ -38,5 +38,23 @@ XML文件引入DTD文件，这样XML可以自定义标签，但又受到DTD文�
 <!ELEMENT 年龄 (#PCDATA)>
 <!ELEMENT 介绍 (#PCDATA)>
 ```
+编写myClass.xml文件并引入DTD文件如下：
 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<!--引入dtd文件，约束这个xml-->
+<!DOCTYPE 班级 SYSTEM "myClass.dtd">
+<班级>
+    <学生>
+        <名字>周小星</名字>    
+        <年龄>23</年龄>
+        <介绍>学习刻苦</介绍>
+    </学生>   
+    <学生>
+        <名字>林晓</名字> 
+        <年龄>25</年龄>
+        <介绍>是一个好学生</介绍>
+    </学生>   
+</班级>
+```
 ### XML文件约束- XML Schema
