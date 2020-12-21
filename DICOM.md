@@ -29,6 +29,8 @@ dicom文件数据中所有dataElement从前到后按tag又可简单分段：文�
 
 https://blog.csdn.net/m_buddy/article/details/53117427?utm_medium=distribute.pc_relevant_download.none-task-blog-baidujs-3.nonecase&depth_1-utm_source=distribute.pc_relevant_download.none-task-blog-baidujs-3.nonecase
 
+[(https://www.researchgate.net/profile/Denis_Obrul/publication/49763520/figure/fig6/AS:668733714464769@1536449950192/DICOM-defined-file-format.png)
+
 学习使用DCMTK工具
 ### 了解DICOM
 1、DICOM语法
