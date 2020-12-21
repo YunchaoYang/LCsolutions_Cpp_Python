@@ -20,6 +20,11 @@ Radiotherapy Extensions for Ion Therapy (Supp 102, Final Text Mar 2006)
 - RT Ion Plan 
 - RT Ion Beams Treatment Record
 
+![DICOM Image with DICOM-RT Extension](https://pubs.rsna.org/cms/10.1148/rg.293075172/asset/images/medium/g09ma01g04x.jpeg)
+
+![DICOM Encoding](https://www.opensource4rt.info/Screen%20shot%202011-10-08%20at%205.05.28%20PM.png)
+
+
 ### tools for DICOM-RT
 
 SlicerRT project in 3D Slicer
@@ -37,4 +42,6 @@ in each slice by looping through contours
 ####dcmtk-dcmrt, dcmrt - a radiation therapy library and utility apps
 This DICOM ToolKit (DCMTK) package consists of source code, documentation and installation instructions for a set of software libraries and applications implementing part of the DICOM/MEDICOM Standard.
 
+### Example of using DCMTK-RT
+This example shows how to call C/C++ Library for reading and writing DICOM RT Files. https://github.com/jpneylon/RTClasses
 
