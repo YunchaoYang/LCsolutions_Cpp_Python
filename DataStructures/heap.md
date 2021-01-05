@@ -1,3 +1,7 @@
+### basic concept
+
+* Priority queues can be implemented by heaps, and heaps can be implemented by arrays.
+
 ###heap quiz
 https://www.geeksforgeeks.org/data-structure-gq/heap-gq/
 
