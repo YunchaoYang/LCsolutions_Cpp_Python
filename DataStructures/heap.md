@@ -1,6 +1,13 @@
 ### basic concept
 
+#### heap vs priority queue
+heap并不属于STL容器组件，它分为 max heap 和min heap，在缺省情况下，max-heap是优先队列（priority queue）的底层实现机制。而这个实现机制中的max-heap实际上是以一个vector表现的完全二叉树（complete binary tree）。STL在<algorithm.h>中实现了对存储在vector/deque 中的元素进行堆操作的函数，包括make_heap, pop_heap, push_heap, sort_heap
 * Priority queues can be implemented by heaps, and heaps can be implemented by arrays.
+
+* Heap是一种数据结构，能保证取max/min是O(1)时间。
+
+
+https://blog.csdn.net/tuke_tuke/article/details/50357939
 
 ###heap quiz
 https://www.geeksforgeeks.org/data-structure-gq/heap-gq/
