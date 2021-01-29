@@ -244,3 +244,6 @@ if __name__ == '__main__':
     save_cube_img('./temp_dir/chapter3_3dcnn_img_X.png', cube_img, 8, 8)
 ```
 
+https://blog.csdn.net/mikasa3/article/details/113063418?ops_request_misc=&request_id=&biz_id=102&utm_term=pydicom&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-7-113063418.pc_search_result_no_baidu_js&spm=1018.2226.3001.4187
+
+
