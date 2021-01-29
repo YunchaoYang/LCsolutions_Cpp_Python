@@ -17,7 +17,7 @@ DataElement 主要由4个部分组成：
 ! [Study tag](https://img-blog.csdnimg.cn/20200702220506227.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MzMwMTQ4,size_16,color_FFFFFF,t_70)
 
 
-'''python
+```python
 增删查改
 
 ds = pydicom.dcmread("rtplan.dcm")
@@ -47,12 +47,12 @@ for n,val in enumerate(ds.pixel_array.flat): # example: zero anything < 300
         ds.pixel_array.flat[n]=0  
 ds.PixelData = ds.pixel_array.tostring()  
 ds.save_as('newfilename.dcm')  
-'''
+```
 
 ### dicom文件预处理
 首先需要导入我们需要的处理的dicom文件，dicom文件是一组连续的图片，我们根据图片中的位置信息对每张图片进行间隔计算，然后把结果存到一个列表中，然后将图片中的像素信息进行提取，缩放到1mm1mm1mm的尺度，get_cube_from_img这个函数是从图像中根据坐标找到目标的中心，并且切一个包含目标的矩阵，然后把这个三维的矩阵平铺开成一个64个2维的矩阵并保存。归一化的目的是为了加快模型收敛的速度，如果要保存成灰度图，需要像素值乘以255.
 
-'''python
+```python
 def is_dicom_file(filename):
     '''
        判断某文件是否是dicom格式的文件
@@ -242,6 +242,5 @@ if __name__ == '__main__':
     cube_img = get_cube_from_img(pngs, 272, 200, 134, 64)
     print(cube_img)
     save_cube_img('./temp_dir/chapter3_3dcnn_img_X.png', cube_img, 8, 8)
-
-'''
+```
 
