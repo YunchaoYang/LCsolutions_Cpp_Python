@@ -15,9 +15,7 @@ The linker needs to know both the directories as well as the library names. Henc
 echo $LD_LIBRARY_PATH
 If you use autotools, you can just configure with `LDFLAGS=-L/some/path/lib`
 
-<div class="text-red bg-red-light mb-2">
-  .text-red on .bg-red-light
-</div>
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
 
 ### How to check GCC environment variable:
 GCC uses the following environment variables:
