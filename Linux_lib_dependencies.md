@@ -15,7 +15,6 @@ The linker needs to know both the directories as well as the library names. Henc
 echo $LD_LIBRARY_PATH
 If you use autotools, you can just configure with `LDFLAGS=-L/some/path/lib`
 
-- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
 
 ### How to check GCC environment variable:
 GCC uses the following environment variables:
@@ -72,7 +71,9 @@ cygwin1.dll => /usr/bin/cygwin1.dll (0x180040000)
 
 ![GCC_CompilationProcess](https://www3.ntu.edu.sg/home/ehchua/programming/cpp/images/GCC_CompilationProcess.png)
 
+```diff
 - soname 
+```
 In Unix and Unix-like operating systems, a soname is a field of data in a shared object file. The soname is a string, which is used as a "logical name" describing the functionality of the object.
 How to get soname 
  - objdump -p libxxx.so | grep SONAME
