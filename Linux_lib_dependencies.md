@@ -15,19 +15,60 @@ The linker needs to know both the directories as well as the library names. Henc
 echo $LD_LIBRARY_PATH
 If you use autotools, you can just configure with `LDFLAGS=-L/some/path/lib`
 
-### How to check environment variable:
-GCC Environment Variables
+<div class="text-red bg-red-light mb-2">
+  .text-red on .bg-red-light
+</div>
+
+### How to check GCC environment variable:
 GCC uses the following environment variables:
 
-* PATH: For searching the executables and run-time shared libraries (.dll, .so).
-* CPATH: For searching the include-paths for headers. It is searched after paths specified in -I<dir> options. C_INCLUDE_PATH and CPLUS_INCLUDE_PATH can be used to specify C and C++ headers if the particular language was indicated in pre-processing.
-* LIBRARY_PATH: For searching library-paths for link libraries. It is searched after paths specified in -L<dir> options.
+* **PATH**: For searching the executables and run-time shared libraries (.dll, .so).
+* **CPATH**: For searching the include-paths for headers. It is searched after paths specified in -I<dir> options. C_INCLUDE_PATH and CPLUS_INCLUDE_PATH can be used to specify C and C++ headers if the particular language was indicated in pre-processing.
+* **LIBRARY_PATH** : For searching library-paths for link libraries. It is searched after paths specified in -L<dir> options.
 * Verbose Mode (-v)
 * Defining Macro (-D)
 
 * -"file"- Utility - Determine File Type
-* -"nm"- Utility - List Symbol Table of Object Files, nm命令存在于多数后出版本的Unix及类似的操作系统中。nm被用来检查二进制文件（包括库，编译后的目标模块，共享目标文件，和独立可执行文件）并显示这些文件的内容，或存储在其中的元信息，特别是符号表。
-* -"ldd"- Utility - List Dynamic-Link Libraries
+
+$ gcc -c hello.c
+$ gcc -o hello.exe hello.o
+ 
+$ file hello.c
+hello.c: C source, ASCII text, with CRLF line terminators
+
+$ file hello.o
+hello.o: data
+ 
+> file hello.exe
+hello.exe: PE32 executable (console) x86-64, for MS Windows
+
+* -"nm"- Utility - List Symbol Table of Object Files, nm命令存在于多数后出版本的Unix及类似的操作系统中。nm被用来检查二进制文件（包括库，编译后的目标模块，共享目标文件，和独立可执行文件）并显示这些文件的内容，或存储在其中的元信息，特别是符号表。"nm" is commonly-used to check if a particular function is defined in an object file. A 'T' in the second column indicates a function that is defined, while a 'U' indicates a function which is undefined and should be resolved by the linker.
+
+Example: $ nm hello.o
+0000000000000000 b .bss
+0000000000000000 d .data
+0000000000000000 p .pdata
+0000000000000000 r .rdata
+0000000000000000 r .rdata$zzz
+0000000000000000 t .text
+0000000000000000 r .xdata
+                 U __main
+0000000000000000 T main
+                 U puts
+
+* -"ldd"- Utility - List Dynamic-Link Libraries, The utility "ldd" examines an executable and displays a list of the shared libraries that it needs. For example,
+
+> ldd hello.exe
+ntdll.dll => /cygdrive/c/WINDOWS/SYSTEM32/ntdll.dll (0x7ff9ba3c0000)
+KERNEL32.DLL => /cygdrive/c/WINDOWS/System32/KERNEL32.DLL (0x7ff9b9880000)
+KERNELBASE.dll => /cygdrive/c/WINDOWS/System32/KERNELBASE.dll (0x7ff9b6a60000)
+SYSFER.DLL => /cygdrive/c/WINDOWS/System32/SYSFER.DLL (0x6ec90000)
+ADVAPI32.dll => /cygdrive/c/WINDOWS/System32/ADVAPI32.dll (0x7ff9b79a0000)
+msvcrt.dll => /cygdrive/c/WINDOWS/System32/msvcrt.dll (0x7ff9b9100000)
+sechost.dll => /cygdrive/c/WINDOWS/System32/sechost.dll (0x7ff9b9000000)
+RPCRT4.dll => /cygdrive/c/WINDOWS/System32/RPCRT4.dll (0x7ff9b9700000)
+cygwin1.dll => /usr/bin/cygwin1.dll (0x180040000)
+
 
 # Try running the compilation in verbose mode (-v) to study the library-paths (-L) and libraries (-l) used in your system:
 
