@@ -9,4 +9,12 @@ https://docs.python.org/3.6/extending/embedding.html
   - Perform a function call to a Python interface routine using the converted values, and
   - Convert the data values from the call from Python to C.
 
+Extension
 
+https://github.com/rob-smallshire/mesher
+
+
+Embedding
+
+https://www.youtube.com/watch?v=DtiZeHUjQvo
+https://github.com/tiger-punch-sports-club/pybind11-tutorial
