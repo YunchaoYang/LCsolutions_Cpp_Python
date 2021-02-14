@@ -1,6 +1,10 @@
 
 Web services: SOAP vs REST: Which one is better? 
 
+* Interoprable (OS, language independent)
+* Extensible
+* Loosely coupled
+
 ### SOAP(Simple Object Access Protocal)
 * Protocal
 * work at any internet protocol
@@ -30,4 +34,4 @@ Web services: SOAP vs REST: Which one is better?
 
 
 https://www.youtube.com/watch?v=7YcW25PHnAA
-
+https://www.youtube.com/watch?v=lL2kcANoQyE
