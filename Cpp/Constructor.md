@@ -27,9 +27,49 @@
 - 2. 用new来动态分配数组, 没有默认的构造函数，也会报错，因为new 会调用对象1 的无参默认的构造函数来初始化对象。`MyClass *temp = new Myclass[10];`
 - 3. 使用了标准库的容器的时候, eg. `std::vector<MyClass> myobject`
 - 4. 一个类A以另外某个类B的对象为成员时，如果A提供了无参构造函数，而B未提供，那么A则无法使用自己的无参构造函数。
+
+```cpp
+class B
+{
+    B(int i){} // B does not have default contructor
+};
+
+class A
+{
+    A(){}
+    B b; // create object b 
+};
+
+int main(void) 
+{ 
+    A a(); // error C2512: 'B' : no appropriate default constructor available
+
+    getchar() ; 
+    return 0 ; 
+} 
+```
+
 - 5. 若类A定义了拷贝构造函数，但是没有定义默认构造函数，那么若B 继承 A，B在初始化的时候会调用A的默认构造函数，
 
+```cpp
+class A
+{
+    A(const A&){}
+};
 
+class B : public A
+{
+    
+};
+
+int main(void) 
+{ 
+    B b; //error C2512:'B': no appropriate default constructor available
+
+    getchar() ; 
+    return 0 ; 
+} 
+```
 ### 隐式的调用构造函数
 
 构造函数除了可以初始化类的对象外，它还有一个很重要的作用，就是将一种类型转换成类类型。转换过程通常是隐式的调用对应的构造函数完成的。
@@ -50,10 +90,8 @@
 * 当我们定义一个对象时，它是由另外一个对象来初始化的时候就用到Copy Constructor了。
 * 一个方法以 "值" 作为参数传进去或者一个方法中以值作为返回。
 ```cpp
-void setPeople(People p1){//以值传入会调用 copy constructor
-	}
-void setPeople(People& p1){//以引用传入不会调用 copy constructor
-	}
+void setPeople(People p1){//以值传入会调用 copy constructor}
+void setPeople(People& p1){//以引用传入不会调用 copy constructor}
 ```
 调用copy constructor的消耗比较大，所以一般都以引用方式作为函数参数。
 
