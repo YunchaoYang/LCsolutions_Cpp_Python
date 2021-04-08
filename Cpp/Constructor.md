@@ -124,3 +124,9 @@ int main()
 
 https://www.geeksforgeeks.org/constructors-c/?ref=lbp
 
+# Why creating an object of derived class must call base class's constructor first?
+To understand this you will have to recall your knowledge on inheritance. What happens when a class is inherited from other? 
+The data members and member functions of base class comes automatically in derived class based on the access specifier but the definition of these members exists in base class only. So when we create an object of derived class, all of the members of derived class must be initialized but the inherited members in derived class can only be initialized by the base class’s constructor as the definition of these members exists in base class only. 
+
+
+
