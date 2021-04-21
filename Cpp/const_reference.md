@@ -45,5 +45,8 @@ int main()
 
 ```
 
+不能返回局部变量的引用。主要原因是局部变量会在函数返回后被销毁，因此被返回的引用就成为了"无所指"的引用，程序会进入未知状态。
+
+
 c++中临时变量不能作为非const的引用参数
 https://blog.csdn.net/kongying168/article/details/3864756?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-1&spm=1001.2101.3001.4242
