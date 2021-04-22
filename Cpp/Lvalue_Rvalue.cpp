@@ -82,3 +82,48 @@ sum(3,4) = 7;
 // However, It is not true for user defined type(class)
 class dog;
 dog().bark(); // dog() is rvalue, is modifiable.
+
+
+
+// This example show using reference return value (a + b)  as lvalue 
+// (a + b) 是一个临时对象，临时对象被c赋值，输出cout
+
+#include   <iostream> 
+using namespace std;
+
+class CComplex {    
+    friend CComplex operator+(const CComplex &cp1, const CComplex &cp2);
+    friend ostream& operator<<(ostream &os, const CComplex &cp);
+    
+    private: 
+     int x; 
+    public: 
+     CComplex(){}
+      
+     CComplex(int x1) 
+     { 
+      x = x1; 
+     }
+};
+ 
+CComplex operator+(const CComplex &cp1, const CComplex &cp2)
+{ 
+ CComplex cp3; 
+ cp3.x = cp1.x + cp2.x; 
+ return cp3; 
+} 
+
+ostream& operator<<(ostream &os, const CComplex &cp)
+{
+ os << cp.x;
+ return os;
+}
+
+int main()
+
+{ 
+ CComplex a(2), b(3), c(4); 
+ cout << (a + b) << endl;
+ cout << ((a + b) = c) << endl;   //临时对象作为左值
+ return 0; 
+}
