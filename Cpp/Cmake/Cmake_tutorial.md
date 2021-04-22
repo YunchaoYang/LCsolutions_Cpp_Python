@@ -5,4 +5,5 @@ Goal: build an interesting project using multiple packages managed by cmake:
   - cross-platform, visual-studio (windows)/ gcc(Linux) etc.
   - using multiple external packages
 
-
+2.references.
+https://coderefinery.github.io/cmake/
