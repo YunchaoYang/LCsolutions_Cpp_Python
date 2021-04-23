@@ -8,7 +8,7 @@
 <h3><a name="t2"></a><a name="t2"></a><span style="color:#3399ea;"><strong>语法规则：</strong></span></h3> 
 <p><span style="color:#86ca5e;"><strong>1. \ 表示将下一字符标记为特殊字符、转义字符；</strong></span></p> 
 <p><span style="color:#86ca5e;"><strong>2. ^ 表示字符串的开始，匹配输入字符串开始的位置；</strong></span></p> 
-<p><span style="color:#86ca5e;"><strong>3. ^$ 表示字符串的结尾，匹配输入字符串结尾的位置；</strong></span></p> 
+<p><span style="color:#86ca5e;"><strong>3. $ 表示字符串的结尾，匹配输入字符串结尾的位置；</strong></span></p> 
 <p><span style="color:#86ca5e;"><strong>4. .&nbsp;表示匹配除换行符" \n "以外的任意字符；</strong></span></p> 
 <p><span style="color:#86ca5e;"><strong>5.&nbsp;\w 表示任意字母、数字、下划线 ；</strong></span></p> 
 <p><span style="color:#86ca5e;"><strong>6. \s 表示任意空白符(tab也包含在内)；</strong></span></p> 
@@ -26,3 +26,86 @@
 <p><span style="color:#86ca5e;"><strong>18.&nbsp;?&nbsp;表示零次或一次匹配前面的字符或子表达式；</strong></span></p> 
 <p><strong><span style="color:#86ca5e;">19. \t \n&nbsp;\r这些平时非常常见，分别表示制表符匹配、换行符匹配、回车符匹配。</span></strong></p> 
 </div>
+        
+        
+```cpp
+#include<regex>
+```
+- regex  双斜杠转义 
+
+- 日期的格式是：2020-01-01
+- \d{4}-\d{2}-\d{2}
+
+有了正则表达式之后，你需要将你的文本和正则表达式交给正则表达式引擎 – 由C++语言（或者其他语言）提供。引擎会在文本中搜索到匹配的结果。请注意，正则表达式有它自身的语法。这与C++的语法是两回事。C++编译器只会检查C++代码的语法。
+
+### 匹配 regex_match
+匹配是判断给定的字符串是否符合某个正则表达式。例如：你想判断当前文本是否全部由数字构成。
+```cpp
+string s1 = "ab123cdef"; // ①
+string s2 = "123456789"; // ②
+regex ex("\\d+"); // ③
+cout << s1 << " is all digit: " << regex_match(s1, ex) << endl; // ④ false
+cout << s2 << " is all digit: " << regex_match(s2, ex) << endl; // ⑤ true
+```
+### 搜索 regex_search
+还有一些时候，我们要判断的并非是文本的全体是否匹配。而是在一大段文本中搜索匹配的目标。
+
+```cpp
+string s = "ab123cdef"; // ①
+regex ex("\\d+");    // ②
+
+smatch match; // ③ std::smatch来保存匹配的结果。除了std::smatch
+regex_search(s, match, ex); // ④
+cout << s << " contains digit: " << match[0] << endl; // ⑤  123
+```
+
+### 替换 regex_replace
+最后，使用正则表达式的还有一个常见功能是文本替换。很多的编辑器都有这样的功能。
+```cpp
+string s = "ab123cdef"; // ①
+regex ex("\\d+");    // ②
+string r = regex_replace(s, ex, "xxx"); // ③
+cout << r << endl; // ④ abxxxcdef
+```
+
+### C++中内置了多种正则表达式文法，在创建正则表达式的时候可以通过参数来选择。
+<table>
+  <thead>
+    <tr>
+      <th>文法</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ECMAScript</td>
+      <td><a href="https://en.cppreference.com/w/cpp/regex/ecmascript">ECMAScript正则表达式语法</a>，默认选项</td>
+    </tr>
+    <tr>
+      <td>basic</td>
+      <td><a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_03">基础POSIX正则表达式语法</a></td>
+    </tr>
+    <tr>
+      <td>extended</td>
+      <td><a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_04">扩展POSIX正则表达式语法</a></td>
+    </tr>
+    <tr>
+      <td>awk</td>
+      <td><a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/awk.html#tag_20_06_13_04">awk工具的正则表达式语法</a></td>
+    </tr>
+    <tr>
+      <td>grep</td>
+      <td><a href="https://www.gnu.org/software/findutils/manual/html_node/find_html/grep-regular-expression-syntax.html">grep工具的正则表达式语法</a></td>
+    </tr>
+    <tr>
+      <td>egrep</td>
+      <td><a href="https://www.gnu.org/software/findutils/manual/html_node/find_html/posix_002degrep-regular-expression-syntax.html#posix_002degrep-regular-expression-syntax">grep工具的正则表达式语法</a></td>
+    </tr>
+  </tbody>
+</table>
+
+### Raw string literal
+
+
+From https://paul.pub/cpp-regex/
+
