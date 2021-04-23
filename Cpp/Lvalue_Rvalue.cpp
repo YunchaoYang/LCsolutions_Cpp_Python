@@ -5,7 +5,6 @@
 */
 
 
-Another good reference: https://paul.pub/cpp-value-category/
 
 //1. Lvalue example
 int i;
@@ -130,3 +129,6 @@ int main()
  cout << ((a + b) = c) << endl;   //临时对象作为左值
  return 0; 
 }
+
+
+Another good reference: https://paul.pub/cpp-value-category/
