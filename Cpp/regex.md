@@ -125,12 +125,6 @@ Raw string literal的格式如下：
         <code class="language-plaintext highlighter-rouge">content</code>是你需要的字符串本身。
 </p>
 
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight" style="position: relative;"><code><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">R"("\w\\w\\\w)"</span><span class="p">;</span>
-<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</code><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div>
-</div>
-
-
 
 From https://paul.pub/cpp-regex/
 
