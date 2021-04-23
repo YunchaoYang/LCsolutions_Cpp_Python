@@ -4,6 +4,9 @@
 * rvalue - not a lavlue, rvalue不能取地址
 */
 
+
+Another good reference: https://paul.pub/cpp-value-category/
+
 //1. Lvalue example
 int i;
 int * p = &i ;
