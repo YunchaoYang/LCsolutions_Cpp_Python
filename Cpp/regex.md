@@ -105,6 +105,31 @@ cout << r << endl; // ④ abxxxcdef
 </table>
 
 ### Raw string literal
+在代码中写字符串有时候是比较麻烦的，因为很多字符需要通过反斜杠转义。当有多个反斜杠连在一起时，就很容易写错或者理解错了。
+
+当通过字符串来写正则表达式时，这个问题就更严重了。因为正则表达式本身也有一些字符需要转义。例如，对于这样一个字符串 "('(?:[^\\\\']|\\\\.)*'|\"(?:[^\\\\\"]|\\\\.)*\")|" 大部分人恐怕很难一眼看出其含义了。
+
+在正则表达式很复杂的时候，推荐大家使用Raw string literal来表达。这种表达式是告诉编译器：这里的内容是纯字符串，因此不再需要增加反斜杠来转义特殊字符。
+
+Raw string literal的格式如下：
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight" style="position: relative;"><code>R"delimiter(raw_characters)delimiter"
+</code><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div></div>
+<p>这其中：</p>
+<ul>
+  <li>delimiter是可选的分隔符，通常不用写</li>
+  <li>raw_characters是具体的字符串</li>
+</ul>
+
+<p>也就是说，
+        <code class="language-plaintext highlighter-rouge">R"(content)"</code>中的
+        <code class="language-plaintext highlighter-rouge">content</code>是你需要的字符串本身。
+</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight" style="position: relative;"><code><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">R"("\w\\w\\\w)"</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</code><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre></div>
+</div>
+
 
 
 From https://paul.pub/cpp-regex/
