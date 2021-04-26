@@ -126,5 +126,39 @@ Raw string literal的格式如下：
 </p>
 
 
-From https://paul.pub/cpp-regex/
+Reference
+1. https://paul.pub/cpp-regex/
+2. https://blog.csdn.net/Piconjo/article/details/104578265?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_utm_term-5&spm=1001.2101.3001.4242
 
+### Examples
+```cpp
+String qq="1234567";
+boolean b=qq.matches("[1-9][0-9]{4,10}");
+// [1-9]代表第一位数必须在1和9之间 
+// [0-9]{4,10} 代表范围 [0-9] 出现至少 4 次，但是不超过 11 次
+```
+
+```cpp
+String ip="192.168.1.1";
+boolean b=ip.matches("([0-9]{0,3}\\.){3}[0-9]{0,3}");
+// ([0-9]{0,3}\\.){3} -- 代表 ([0-9]{0,3}\\.) 出现3次。
+// 展开既是： 
+// ([0-9]{0,3}\\.) ([0-9]{0,3}\\.) ([0-9]{0,3}\\.) [0-9]{0,3}
+// -------------.|--------------.|---------------.|-----------|
+//       192    .       168     .          1     .      1
+```
+
+```cpp
+String ip = "192.168.1.1";
+String[] aa = ip.split("\\.");
+//若regex为.的话 必须加双斜杠转义 否则无效
+```
+```cpp
+// 敏感词/违禁词屏蔽：
+String dirtySay = "Hello暴血暴力暴血血腥暴血World";
+String cleanSay = dirtySay.replaceAll("(暴力|血腥)+", "*");/*替换All全部违禁词*/
+```
+```cpp
+String str = "   12          44    68  piconjo     19    36 ";//中间穿插着随机长度的空格
+String[] a = str.trim().split(" +");
+```
