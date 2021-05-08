@@ -42,9 +42,12 @@ Each member is initialized as an "set identity", the first member of this set.
 ## 2.1.4 UpTrees: Simple Running Time
  
  ```cpp
- int DisjointSets::find(){
-if ( s[i] < 0 ) return i;
-else  return _find(s[i]); 
+ int DisjointSets::find()
+ {
+    if ( s[i] < 0 ) 
+        return i;
+    else  
+        return _find(s[i]); 
 } 
  ```
  
