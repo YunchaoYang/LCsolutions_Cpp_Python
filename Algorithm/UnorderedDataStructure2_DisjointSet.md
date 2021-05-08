@@ -84,3 +84,19 @@ Each node in the route of finding an element s, update all node pointing directl
   - 1 + log*(log(n)), if ( n > 1)
 
 What is __lg*(2^65536)__?
+
+- lg*(2^65536) 
+   -  =  1 + lg*(65536) 
+   -  =  1+ lg*(2^16) 
+   -  =  1 + ( 1 + lg*(16)) 
+   -  =  1 + ( 1 + ( 1 + lg*(4))) 
+   -  =  1 + ( 1 + ( 1 + ( 1 + lg*(2) ))) 
+   -  =  1 + ( 1 + ( 1 + ( 1 + lg*(2^1) )))
+   -  =  1 + ( 1 + ( 1 + ( 1 + (1 + lg*(1)) )))
+   -  =  1 + ( 1 + ( 1 + ( 1 + (1 + 0 ) )))
+   -  = 5
+  
+In a Disjoint Sets implemented with __smart unions__ and __path compression on find__, 
+any sequence of m union and find operations result in the worse case running time of O(m*lg*(n)),
+where n is the number of items in the Disjoint Sets.
+
