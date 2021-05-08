@@ -72,3 +72,10 @@ else  return _find(s[i]);
 Each node in the route of finding an element s, update all node pointing directly to the root node .
 
 
+### 2.1.5B UpTrees: Smart Union & Path Compression II
+- Disjoint Set Analysis
+   - The __iterated log__ function: The number of times you can take a log of a number;
+
+- log*(n) = 
+  - 0, if( n <= 1)
+  - 1 + log*(log(n)), if ( n > 1)
