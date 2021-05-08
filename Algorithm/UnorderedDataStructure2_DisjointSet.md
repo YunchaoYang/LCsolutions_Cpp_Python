@@ -97,6 +97,6 @@ What is __lg*(2^65536)__?
    -  = 5
   
 In a Disjoint Sets implemented with __smart unions__ and __path compression on find__, 
-any sequence of m union and find operations result in the worse case running time of O(m*lg*(n)),
+any sequence of m union and find operations result in the worse case running time of __O(m*lg*(n))__,
 where n is the number of items in the Disjoint Sets.
 
