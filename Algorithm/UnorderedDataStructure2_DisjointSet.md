@@ -82,3 +82,5 @@ Each node in the route of finding an element s, update all node pointing directl
 - log*(n) = 
   - 0, if( n <= 1)
   - 1 + log*(log(n)), if ( n > 1)
+
+What is __lg*(2^65536)__?
