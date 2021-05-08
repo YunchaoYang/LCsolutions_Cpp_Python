@@ -77,7 +77,7 @@ Each node in the route of finding an element s, update all node pointing directl
 
 ### 2.1.5B UpTrees: Smart Union & Path Compression II
 - Disjoint Set Analysis
-   - The __iterated log__ function: The number of times you can take a log of a number;
+   - The __iterated log__ function: _The number of times you can take a log of a number_;
 
 - log*(n) = 
   - 0, if( n <= 1)
