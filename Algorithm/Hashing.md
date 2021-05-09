@@ -25,3 +25,12 @@ Dealing with the collision like a linked list, append the collisional elements t
 * load factor
 
 The load factor of the table is alpha is going to be defined as the number of elements inside of the table divided by the size of the table itself. 
+
+## Lesson 1.1.5 Collision Handling II: Probing and Double Hashing
+
+- probe-based hashing
+  - potential problem primary clustring, to deal with it, use double hashing
+ 
+- double hashing
+- 
+
