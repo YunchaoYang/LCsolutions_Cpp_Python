@@ -198,4 +198,39 @@ Look at this perfect explanation:
 
 `A derived class doesn't inherit access to private data members. However, it does inherit a full parent object, which contains any private members which that class declares.`
 
+## Inheritance chains
+```cpp  
+class A
+{ public:    
+    A(int a)   {std::cout << "A: " << a << '\n';    }
+};
+ 
+class B: public A
+{public:
+    B(int a, double b)
+    : A{ a } // call A constructor
+    {
+        std::cout << "B: " << b << '\n';
+    }
+};
+ 
+class C: public B
+{ public:
+    C(int a , double b , char c)
+    : B{ a, b } // call B constructor
+    {
+        std::cout << "C: " << c << '\n';
+    }
+};
+ 
+int main()
+{
+    C c{ 5, 4.3, 'R' };
+ 
+    return 0;
+}
+```
 
+# Destructors
+
+When a derived class is destroyed, each destructor is called in the reverse order of construction.
