@@ -1,4 +1,4 @@
-https://www.learncpp.com/cpp-tutorial/constructors-and-initialization-of-derived-classes/
+Notes from reading https://www.learncpp.com/cpp-tutorial/constructors-and-initialization-of-derived-classes/
 
 - Here’s what actually happens when derived is instantiated:
   - 1. Memory for derived is set aside (enough for both the Base and Derived portions)
