@@ -187,14 +187,15 @@ int main()
 
 In the above code, we’ve made m_id and m_cost private. This is fine, since we use the relevant constructors to initialize them, and use a public accessor to get the values.
 
-This prints, as expected:
-
+This prints:
+```
 Id: 5
-
 Cost: 1.3
+```
 
 This is confusing because the inherited class does not hold the private member of base class, but still there exists the private data in the derived object here. 
 Look at this perfect explanation: 
+
 `A derived class doesn't inherit access to private data members. However, it does inherit a full parent object, which contains any private members which that class declares.`
 
 
