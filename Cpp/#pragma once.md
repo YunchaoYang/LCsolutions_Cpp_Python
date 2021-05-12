@@ -6,13 +6,19 @@
 
  * 方式一：
 ```cpp
+// File.h
 #ifndef  __SOMEFILE_H__
 #define   __SOMEFILE_H__
+/* Your code here*/
+#endif
 ```
 
 * 方式二：
 ```cpp
+// File.h
 #pragma once
+/* Your code here*/
+
 ```
 
 #ifndef的方式依赖于宏名字不能冲突，这不光可以保证同一个文件不会被包含多次，也能保证内容完全相同的两个文件不会被不小心同时包含。当然，缺点就是如果不同头文件的宏名不小心“撞车”，可能就会导致头文件明明存在，编译器却硬说找不到声明的状况
