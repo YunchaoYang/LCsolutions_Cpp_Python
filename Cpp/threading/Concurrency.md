@@ -18,7 +18,7 @@ The key question in my mind:
 
 
 4.  Key difference between concurrency and threading?
-  * My tentative answer: concurrency involves the linking interaction between multiple threads, while the multithreading technology itself focus on di 
+  * My tentative answer: concurrency involves the linking interaction between multiple threads, while the multithreading technology itself is designed to run several threads in single-core or multi-core machines. The subject of concurrency is about task while threading refers more to the way of doing task.   
   * Online explanation: 
      *  Multithreading — This is a software implementation allowing different threads to be executed concurrently. 
         A multithreaded program appears to be doing several things at the same time even when it’s running on a single-core machine. 
