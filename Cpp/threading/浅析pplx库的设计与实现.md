@@ -168,3 +168,295 @@ __declspec(noinline) explicit task(T _Param);
 参数 `_Para` 可以是 lambda 表达式、函数对象、仿函数、函数指针等可以以 `_Param()` 形式调用的类型，因此可以使用各种灵活的方式构造 task 对象，其中 lambda 表达式无疑是最方便常用的一种。
 
 
+接下来我们修改上面的程序，打印出线程 id 以便观察并行任务的执行情况。
+
+``` cpp
+#include <iostream>
+#include <thread>
+
+using namespace concurrency;
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    cout << "Major thread id is: " << this_thread::get_id() << endl;
+
+    task<int> final_answer([]
+    {
+        cout << "Thread id in task is:" << this_thread::get_id() << endl;
+        return 42;
+    });
+    
+    cout << "The final answer is: " << final_answer.get() << endl;
+    
+    return 0;
+}
+```
+注意两个线程 id 是相同的，很有些意外，任务是在主线程执行的而非预计的其他后台工作线程。实际上这是 PPL 的优化策略造成的。
+
+再修改下程序，在 task 对象构造完成后加一个 sleep 调用挂起当前线程一小段时间：
+
+``` cpp 
+int main(int argc, char *argv[])
+{
+    cout << "Major thread id is: " << this_thread::get_id() << endl;
+
+    task<int> final_answer([]
+    {
+        cout << "Thread id in task is:" << this_thread::get_id() << endl;
+        return 42;
+    });
+    
+    this_thread::sleep_for(chrono::milliseconds(1));
+
+    cout << "The final answer is: " << final_answer.get() << endl;
+    
+    return 0;
+}
+```
+
+PPL 使用了一个新的线程执行并行任务，实际上 PPL 是使用了线程池来执行被调度到的任务。
+
+而在上一个程序中，由于没有 sleep，也没有其他耗时的代码，执行到 task::get 方法时并行任务尚未被调度所以直接在当前线程执行该任务，这样就节省了两次线程切换的开销。
+
+MSDN 中对 task::wait 方法的说明：
+
+It is possible for wait to execute the task inline, if all of the tasks dependencies are satisfied, and it has not already been picked up for execution by a background worker.
+
+task::get 方法的内部实现会先调用 task::wait 方法所以有同样的效果。
+
+ 
+本章小结：
+
+1. task 类对象构造完成后即可被调度执行；
+
+2. 并行有可能被优化在当前线程执行；
+
+# 创建并运行任务
+可以通过多种途径创建任务：
+``` cpp
+ //构造函数
+auto task = pplx::task<int>([](){
+    return 10;
+});
+ 
+//lambda
+auto task = []()->pplx::task<int>{
+    return pplx::task_from_result(10);
+};
+ 
+//create_task
+auto task = pplx::create_task([](){
+    return 10;
+});
+ 
+//create_task 创建延迟任务
+pplx::task_completion_event<int> tce;// task_completion_event 需按值传递
+auto task = pplx::create_task(tce);
+```
+
+# 可以创建任务链：
+pplx::task<std::string> create_print_task(const std::string& init_value)
+{
+    return pplx::create_task([init_value]() {
+        std::cout <<"Current value:" << init_value << std::endl;
+        return std::string("Value 2");
+    })
+
+    .then([](std::string value) {
+        std::cout << "Current value:" << value << std::endl;
+        return std::string("Value 3");
+    })
+
+    .then([](std::string value) {
+        std::cout << "Current value:" << value << std::endl;
+        return std::string("Value 4");
+    });
+}
+
+# 使用task.get()或者task.wait()执行任务：
+* 阻塞方式get(): 阻塞直到任务执行完成，并返回任务结果，当任务取消时，抛出task_canceled异常，发生其它异常也会被抛出；
+* 非阻塞方式wait()：等待任务到达终止状态，然后返回任务状态：completed、canceled，如果发生异常会被抛出。
+``` cpp 
+void test_task_chain()
+{
+    auto task_chain = create_print_task("Value 1");
+    task_chain.then([](std::string value) {
+        std::cout << "Result value: " << value << std::endl;
+        return value;
+    })
+
+    // process exception
+    .then([](pplx::task<std::string> previousTask) {
+        try {
+            previousTask.get();
+        }
+        catch (const std::exception& e) {
+            std::cout << "exception: " << e.what() << std::endl;
+        }
+    })
+
+    .wait();
+}
+```
+
+# 组任务
+可以创建和执行一组任务，根据需要来选择是全部执行再返回，还是执行任一任务就返回。
+
+- `when_all`：返回组任务，只有当所有任务都完成时组任务才会返回成功；如果任一任务被取消或者抛出异常，则组任务会完成并处理取消状态，在组任务`get()`或者`wait()`时抛出异常。如果任务类型为`task<T>`，则组任务类型为`task<vector<T>>`。
+- `when_any`：返回组任务，当任一任务完成时组任务就会返回成功；如果所有任务都被取消或者抛出异常，则组任务会完成并处理取消状态，并且如果任何任务发生异常，在组任务get或者wait时抛出异常。如果任务类型为task<T>，则组任务类型为task<T, size_t>，size_t 返回完成任务的索引。
+
+```cpp 
+void test_group_tasks()
+{
+    auto sleep_print = [](int seconds, const std::string& info) {
+        if (seconds > 0) {
+            sleep(seconds);
+        }
+
+        std::cout << info << std::endl;
+    };
+
+    auto/*std::array<pplx::task<int>, 3>*/ tasks = {
+        pplx::create_task([sleep_print]() -> int { sleep_print(2, "Task 1"); return 1; }),
+        pplx::create_task([sleep_print]() -> int { sleep_print(2, "Task 2"); return 2; }),
+        pplx::create_task([sleep_print]() -> int { sleep_print(4, "Task 3"); return 3; })
+    };
+
+    {
+        std::cout << "=== when_all ===" << std::endl;
+
+        auto joinTask = pplx::when_all(std::begin(tasks), std::end(tasks));
+        auto result = joinTask.wait();
+        std::cout << "All joined thread. result: " << result << std::endl;
+    }
+
+    {
+        std::cout << "=== when_any ===" << std::endl;
+
+        auto joinTask = pplx::when_any(std::begin(tasks), std::end(tasks))
+        .then([](std::pair<int, size_t> result) {
+            std::cout << "First task to finish returns "
+                  << result.first
+                  << " and has index "
+                  << result.second << std::endl;
+        });
+
+        auto result = joinTask.wait();
+        std::cout << "Any joined thread. result: " << result << std::endl;
+    }
+}
+```
+
+# 取消任务
+cancellation_token_source 通过封装一个 cancellation_token 指针来提供取消操作，通过cancellation_token.is_canceled()在执行任务的过程中判断任务是否要被取消。
+
+示例中的任务会循环执行，直到显式取消任务：
+``` cpp
+void test_cancellation()
+{
+    pplx::cancellation_token_source cts;
+    std::cout << "Creating task..." << std::endl;
+
+    auto task = pplx::create_task([cts]{
+        bool moreToDo = true;
+        while (moreToDo) {
+           if (cts.get_token().is_canceled()) {
+               return;
+           }
+           else {
+               moreToDo = []()->bool {
+                   std::cout << "Performing work at " << now() << std::endl;
+                   sleep(1);
+                   return true;
+               }();
+           }
+        }
+    });
+
+    sleep(3);
+
+    std::cout << "Canceling task... " << now() << std::endl;
+    cts.cancel();
+
+    std::cout << "Waiting for task to complete... " << now() << std::endl;
+    task.wait();
+
+    std::cout << "Done. " << now() << std::endl;
+}
+————————————————
+版权声明：本文为CSDN博主「飘飘白云」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/kesalin/article/details/86713720
+```
+
+当要在异步任务链中支持取消时，需要将cancellation_token作为构造task的参数传递，然后结合task.wait()判断是否要取消：
+```
+void test_cancellation_async()
+{
+    pplx::cancellation_token_source cts;
+    auto task = pplx::task<void>([cts]() {
+        std::cout << "Cancel continue_task" << std::endl;
+        cts.cancel();
+    })
+
+    .then([]() {
+        std::cout << "This will not run" << std::endl;
+    }, cts.get_token());
+
+    try {
+        if (task.wait() == pplx::task_status::canceled) {
+            std::cout<<"Taks has been canceled"<<std::endl;
+        }
+        else {
+            task.get();
+        }
+    }
+    catch (const std::exception& e) {
+        std::cout << "exception: " << e.what() << std::endl;
+    }
+}
+```
+# 处理异常
+
+之前说过如果任务发生异常，会在get或者wait时抛出，但是如果希望在异步任务链中判定之前执行是否发生异常做出操作时，可以采用另外的方式。
+当使用task.then时一般是这样写的：
+``` cpp
+task<T>.then([](T t){
+     //处理任务结果t
+})
+```
+这时候进入then时之前的任务已经执行完成了，task.then有另外一种写法，能够在then时并没有执行任务：
+``` cpp
+task<T>.then([](task<T> task){
+       try 
+       {
+              task.get(); //使用get或者wait执行任务
+       }
+       catch(...)
+       {
+           //处理异常
+       }
+})
+```
+# C++ concurrency::task实现异步编程
+主要使用task class 及其相关类型和函数，它们都包含在 concurrency 命名空间中且在 <ppltasks.h> 中定义。concurrency::task 类是一个通用类型，但是当使用 /ZW 编译器开关（对于 Windows 运行时应用和组件而言是必需的）时，任务类会封装 Windows 运行时异步类型，以便更容易地完成以下工作：
+1.将多个异步和同步操作结合在一起
+2.在任务链中处理异常
+3.在任务链中执行取消
+4.确保单个任务在相应的线程上下文或单元中运行
+
+task::then 函数创建并返回的任务称为延续。用户提供的 lambda 输入参数（在此情况下）是任务操作在完成时产生的结果。
+它与你在直接使用 IAsyncOperation 接口时通过调用 IAsyncOperation::GetResults 检索到的值相同。
+task::then 方法立即返回，并且其代理直至异步工作成功完成后才运行。 
+
+# 创建任务链
+
+在异步编程中，常见的做法是定义一个操作序列，也称作任务链，其中每个延续只有在前一个延续完成后才能执行。在某些情况下，上一个（或先行）任务会产生一个被延续接受为输入的值。通过使用 task::then 方法，你可以按照直观且简单的方式创建任务链；该方法返回一个 task<T>，其中 T 是 lambda 函数的返回类型。你可以将多个延续组合到一个任务链中： myTask.then(…).then(…).then(…);
+当延续创建一个新的异步操作时，任务链尤其有用；此类任务称为异步任务。
+    
+    
+# Lambda 函数返回类型和任务返回类型
+
+在任务延续中，lambda 函数的返回类型包含在 task 对象中。如果该 lambda 返回 double，则延续任务的类型为 task<double>。 
+    
+    https://ninesun.blog.csdn.net/article/details/75735001?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EOPENSEARCH%7Edefault-8.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EOPENSEARCH%7Edefault-8.control
