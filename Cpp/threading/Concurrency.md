@@ -28,4 +28,6 @@ The key question in my mind:
 
  5. Common Problems associated with Concurrency
     * Thread interference errors (Race Conditions)
-    * 
+    * Deadlock
+
+C++17 added parallel algorithms — and parallel implementations of many standard algorithms.
