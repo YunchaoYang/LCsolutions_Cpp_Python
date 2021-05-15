@@ -1,3 +1,19 @@
+### Inline
+如果一些函数被频繁调用，不断地有函数入栈，即函数栈，会造成栈空间或栈内存的大量消耗。为了解决这个问题，特别的引入了inline修饰符，表示为内联函数。
+```cpp
+inline char* dbtest(int a) {  return (i % 2 > 0) ? "奇" : "偶";  }
+int main() {  
+	int i = 0;  
+	for (i=1; i < 100; i++) {  
+		printf("i:%d    奇偶性:%s /n", i, dbtest(i));       
+	}  
+} 
+```
+其实在内部的工作就是在每个for循环的内部任何调用dbtest(i)的地方都换成了(i%2>0)?"奇":"偶"这样就避免了频繁调用函数对栈内存重复开辟所带来的消耗。
+
+* 关键字inline 必须与函数定义体放在一起才能使函数成为内联，仅将 inline 放在函数声明前面不起任何作用。
+* 内联是以代码膨胀（复制）为代价, 每一处内联函数的调用都要复制代码，将使程序的总代码量增大，消耗更多的内存空间。
+
 ### 内联函数 [ Inline ]
 C++ 内联函数是通常与类一起使用。
 如果一个函数是内联的，那么在编译时，编译器会把该函数的代码副本放置在每个调用该函数的地方，是不是感觉和 宏 很像，
@@ -44,6 +60,8 @@ inline 在大多数 C++ 程序中是编译行为。其次，因为内联函数�
     inline const T& std::max(const T& a,const T& b)
     {return a<b?b:a}
 ```
+
+(5) inline函数仅仅是一个对编译器的建议，所以最后能否真正内联，看编译器的意思，它如果认为函数不复杂，能在调用点展开，就会真正内联，并不是说声明了内联就会内联，声明内联只是一个建议而已。
 
 [reference]
 * [1](https://blog.csdn.net/u011857683/article/details/81606433?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522160682217619195271654251%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=160682217619195271654251&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-81606433.pc_first_rank_v2_rank_v28&utm_term=inline&spm=1018.2118.3001.4449)
