@@ -1,0 +1,22 @@
+
+https://google.github.io/styleguide/cppguide.html#Use_of_const
+
+
+![20140713220242000](https://user-images.githubusercontent.com/6526592/118376854-87a00600-b598-11eb-851a-0928b9f06481.jpg)
+https://blog.csdn.net/voidccc/article/details/37599203?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162110949316780265478634%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=162110949316780265478634&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-2-37599203.pc_search_result_cache&utm_term=google+c%2B%2B+style+guide+%E4%B8%AD%E6%96%87&spm=1018.2226.3001.4187
+
+Google C++ Style Guide是一份不错的C++编码指南，我制作了一张比较全面的说明图，可以在短时间内快速掌握规范的重点内容。不过规范毕竟是人定的，记得活学活用。看图前别忘了阅读下面三条重要建议：
+
+1 保持一致也非常重要，如果你在一个文件中新加的代码和原有代码风格相去甚远的话，这就破坏了文件本身的整体美观也影响阅读，所以要尽量避免。
+
+2 一些条目往往有例外，比如下面这些，所以本图不能代替文档，有时间还是把PDF认真阅读一遍吧。
+
+    异常在测试框架中确实很好用
+
+    RTTI在某些单元测试中非常有用
+
+    在记录日志时可以使用流
+
+    操作符重载 不提倡使用，有些STL 算法确实需要重载operator==时可以这么做。
+
+
