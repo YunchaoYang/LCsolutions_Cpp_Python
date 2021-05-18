@@ -1,4 +1,17 @@
 
+* 功能
+  * URI构造/解析，
+  * JSON编解码，
+  * HTTP客户端、
+  * HTTP服务端，
+  * WebSocket客户端，
+  * 流式传输，
+  * oAuth验证
+
+* Dependencies
+  * Boost Asio
+  * OpenSSL
+  * CMake
 
 https://devblogs.microsoft.com/cppblog/connecting-to-facebook-with-the-c-rest-sdk/
 
@@ -7,7 +20,56 @@ Client:
 2. use OAuth to perform user logins
 3. uri_bulder 
 
+Parallelism is hard, concurrency is harder.
+"Concurrent program wait faster."
 
+### Concurrency in C++ today
+* Threading Building Blocks (Intel TBB)
+* Prallel Patterns Library Library (Microsoft PPL)
+* CUDA
+* OpenCL
+* Clik
+* AMP
+
+
+### std::future in C++ 11.
+``` cpp
+// launch a task
+future<int> work1 = async([]{return compute();};
+// launch another task
+future<int> work2 = async([]{return compute();};
+
+//collect the results
+cout << work1.get() + work2.get();
+```
+### Concurrency as Composition of Work
+``` cpp
+// collect the results
+cout << work1.get() + work2.get(); // problem: blocking call get(), which hold a thread
+// future.get() is used to retrieve the result of computation.
+
+```
+### PPL task<T>
+
+``` cpp
+// launch a task
+task<int> work1 = create_task([]{return compute();};
+// launch another task
+task<int> work2 = create_task([]{return compute();};
+
+//collect the results
+cout << work1.get() + work2.get(); 
+``` 
+### continuation Chaining
+``` cpp
+// launch a task
+task<int> work1 = create_task([]{return compute();};
+// launch another task
+task<int> work2 = create_task([]{return compute();};
+
+//collect the results
+cout << work1.get() + work2.get();
+```
 
 # cpprestsdk 
 
@@ -105,3 +167,32 @@ int main(int argc, char argv[])
 }
 ```
 https://blog.51cto.com/wdx04/1727907
+
+``` cpp 
+#include <http_client.h> 
+#include<filestream.h> 
+#include <uri.h> using namespace concurrency::streams; 
+using namespace web::http::client; 
+using namespace web::http; 
+
+int main () 
+{ 
+  // Open stream to file. file_stream<unsigned char>::open_istream (L"myfile.txt") .then ([](basic_istream<unsigned char> fileStream) 
+  { 
+    // Make HTTP request with the file stream as the body. http_client client (L"http://www.myhttpserver.com"); 
+    client.request (methods::PUT, L"myfile", fileStream) .then ([fileStream](http_response response) 
+    { 
+      fileStream.close (); 
+      // Perform actions here to inspect the HTTP response... if(response.status_code () == status_codes::OK) 
+      { 
+      } 
+    }); 
+  }); 
+
+  return 0; 
+}
+```
+
+```cpp 
+
+```
