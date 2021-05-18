@@ -72,6 +72,7 @@ cout << work1.get() + work2.get();
 ```
 
 # cpprestsdk 
+https://github.com/stgates/webservicescppcon2014
 
 https://stackoverflow.com/questions/44597525/cpp-rest-sdk-json-how-to-create-json-w-array-and-write-to-file
 
