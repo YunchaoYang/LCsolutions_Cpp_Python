@@ -72,9 +72,15 @@ cout << work1.get() + work2.get();
 ```
 
 # cpprestsdk 
-https://github.com/stgates/webservicescppcon2014
 
 https://stackoverflow.com/questions/44597525/cpp-rest-sdk-json-how-to-create-json-w-array-and-write-to-file
+
+* Other Examples:
+   * Webservices CppCon2014 talk  https://github.com/stgates/webservicescppcon2014
+   *  https://github.com/deercoder/cpprestsdk-example This project uses Microsoft REST SDK and Microsoft Cognitive Service to do face detection, computer vision analysis and emotion detection
+   *  https://github.com/kenhero/Cpp-REST-SDK-Client-Server- A collection of examples.
+   *  cpprest_sandbox simple server https://github.com/azyu/cpprest_sandbox
+   *  4 examples showing SIMPLE USAGE C++ REST SDK https://github.com/ibnusyuhadap3/CppRESTSDK-tutorials
 
 需要注意的是，C++ REST SDK在Windows下，使用Windows系统自带的WinHTTP/HTTP Server API来实现HTTP协议通信，而在其它平台下是用Boost ASIO来实现HTTP协议通信，
 
