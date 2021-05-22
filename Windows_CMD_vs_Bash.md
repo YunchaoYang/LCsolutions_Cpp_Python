@@ -40,5 +40,6 @@
       <tr><td>30.</td><td>tree</td><td>ls -R</td><td>To list directory recursively.</td></tr>
       <tr><td>31.</td><td> cd </td><td> pwd </td><td>Show current directory</td></tr>
       <tr><td>31.</td><td> %cd% </td><td> ${pwd} </td><td>Get variable of current directory</td></tr>
+      <tr><td>32.</td><td> set </td><td>  printenv </td><td>Print environment variable</td></tr>
 
   </tbody>
