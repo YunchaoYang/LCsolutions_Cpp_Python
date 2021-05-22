@@ -41,5 +41,19 @@
       <tr><td>31.</td><td> cd </td><td> pwd </td><td>Show current directory</td></tr>
       <tr><td>31.</td><td> %cd% </td><td> ${pwd} </td><td>Get variable of current directory</td></tr>
       <tr><td>32.</td><td> set </td><td>  printenv </td><td>Print environment variable</td></tr>
-
   </tbody>
+</table>
+### Windows Set environment variable
+* set 
+    * show variable
+* set varname
+    * echo %USERNAME%
+* set varname=value
+    * set include=c:\directory
+* set varname=
+* echo %[variable_name]%
+* setx [variable_name] "[variable_value]": set a new user-specific environment
+    * 
+
+* Unset Environment Variables 
+    * 
