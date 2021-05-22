@@ -8,18 +8,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1.</td>
-        <td>dir</td>
-        <td>ls -l</td>
-        <td>Directory listing</td>
-      </tr>
-      <tr>
-        <td>2.</td>
-        <td>ren</td>
-        <td>mv</td>
-        <td>Rename a file</td>
-      </tr>
+      <tr> <td>1.</td> <td>dir</td><td>ls -l</td><td>Directory listing</td></tr>
+      <tr> <td>2.</td> <td>ren</td> <td>mv</td><td>Rename a file</td> </tr>
       <tr><td>3.</td><td>copy</td><td>cp</td><td>Copying a file</td></tr>
       <tr><td>4.</td><td>move</td><td>mv</td><td>Moving a file</td></tr>
       <tr><td>5.</td><td>cls</td><td>clear</td><td>Clear Screen</td></tr>
@@ -48,6 +38,7 @@
       <tr><td>28.</td><td>nslookup</td><td>nslookup</td><td>To query Internet name servers interactively.</td></tr>
       <tr><td>29.</td><td>chdisk</td><td>du -s</td><td>For disk usage.</td></tr>
       <tr><td>30.</td><td>tree</td><td>ls -R</td><td>To list directory recursively.</td></tr>
-      <tr><td>31.</td><td> %cd% </td><td> ${pwd} </td><td>Show current directory</td></tr>
-      
+      <tr><td>31.</td><td> cd </td><td> pwd </td><td>Show current directory</td></tr>
+      <tr><td>31.</td><td> %cd% </td><td> ${pwd} </td><td>Get variable of current directory</td></tr>
+
   </tbody>
