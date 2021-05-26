@@ -41,6 +41,16 @@ from left to right; from posterior to anterior; from inferior to superior
 
 
 ![world-patient-coordinate](https://user-images.githubusercontent.com/6526592/119681080-be371580-be0f-11eb-841b-82f36cfd1eaa.PNG)
+Where:
+
+- Pxyz The coordinates of the voxel (i,j) in the frame's image plane in units of mm.
+- Sxyz The three values of Image Position (Patient) (0020,0032). It is the location in mm from the origin of the RCS.
+- Xxyz The values from the row (X) direction cosine of Image Orientation (Patient) (0020,0037).
+- Yxyz The values from the column (Y) direction cosine of Image Orientation (Patient) (0020,0037).
+- i Column index to the image plane. The first column is index zero.
+- Δi Column pixel resolution of Pixel Spacing (0028,0030) in units of mm.
+- j Row index to the image plane. The first row index is zero.
+- Δj Row pixel resolution of Pixel Spacing (0028,0030) in units of mm.
 
 ``` cpp 
 /* voxel index to point world position */
