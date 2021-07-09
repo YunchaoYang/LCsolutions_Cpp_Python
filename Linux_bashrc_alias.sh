@@ -63,6 +63,8 @@ if [1 == 2] then
 # How to Find Out Top Directories and Files (Disk Space) in Linux
 # https://www.tecmint.com/find-top-large-directories-and-files-sizes-in-linux/
 du -hs * | sort -rh | head -5
+
+
 # enable color support of ls and also add handy aliases
    if [ -x /usr/bin/dircolors ]; then
        test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
