@@ -60,7 +60,9 @@ if [1 == 2] then
 
     export PATH=$HOME/Nek5000/Nek5000-v1/bin:$PATH
 
-
+# How to Find Out Top Directories and Files (Disk Space) in Linux
+# https://www.tecmint.com/find-top-large-directories-and-files-sizes-in-linux/
+du -hs * | sort -rh | head -5
 # enable color support of ls and also add handy aliases
    if [ -x /usr/bin/dircolors ]; then
        test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
